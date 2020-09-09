@@ -1,0 +1,4663 @@
+openapi: 3.0.3
+info:
+  title: CloudReactor API
+  version: 0.1.0
+  description: CloudReactor API Documentation
+  contact:
+    name: Jeff Tsay
+    email: jeff@cloudreactor.io
+paths:
+  /api-docs/:
+    get:
+      operationId: api_docs_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - th
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api-docs
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/alert_methods/:
+    get:
+      operationId: api_v1_alert_methods_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AlertMethod'
+          description: ''
+    post:
+      operationId: api_v1_alert_methods_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertMethod'
+          description: ''
+  /api/v1/alert_methods/{uuid}/:
+    get:
+      operationId: api_v1_alert_methods_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertMethod'
+          description: ''
+    put:
+      operationId: api_v1_alert_methods_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertMethod'
+          description: ''
+    patch:
+      operationId: api_v1_alert_methods_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAlertMethod'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAlertMethod'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAlertMethod'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertMethod'
+          description: ''
+    delete:
+      operationId: api_v1_alert_methods_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/email_notification_profiles/:
+    get:
+      operationId: api_v1_email_notification_profiles_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EmailNotificationProfile'
+          description: ''
+    post:
+      operationId: api_v1_email_notification_profiles_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailNotificationProfile'
+          description: ''
+  /api/v1/email_notification_profiles/{uuid}/:
+    get:
+      operationId: api_v1_email_notification_profiles_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailNotificationProfile'
+          description: ''
+    put:
+      operationId: api_v1_email_notification_profiles_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailNotificationProfile'
+          description: ''
+    patch:
+      operationId: api_v1_email_notification_profiles_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmailNotificationProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEmailNotificationProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEmailNotificationProfile'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailNotificationProfile'
+          description: ''
+    delete:
+      operationId: api_v1_email_notification_profiles_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/pagerduty_profiles/:
+    get:
+      operationId: api_v1_pagerduty_profiles_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PagerDutyProfile'
+          description: ''
+    post:
+      operationId: api_v1_pagerduty_profiles_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagerDutyProfile'
+          description: ''
+  /api/v1/pagerduty_profiles/{uuid}/:
+    get:
+      operationId: api_v1_pagerduty_profiles_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagerDutyProfile'
+          description: ''
+    put:
+      operationId: api_v1_pagerduty_profiles_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagerDutyProfile'
+          description: ''
+    patch:
+      operationId: api_v1_pagerduty_profiles_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPagerDutyProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPagerDutyProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPagerDutyProfile'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagerDutyProfile'
+          description: ''
+    delete:
+      operationId: api_v1_pagerduty_profiles_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/run_environments/:
+    get:
+      operationId: api_v1_run_environments_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RunEnvironment'
+          description: ''
+    post:
+      operationId: api_v1_run_environments_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunEnvironment'
+          description: ''
+  /api/v1/run_environments/{uuid}/:
+    get:
+      operationId: api_v1_run_environments_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunEnvironment'
+          description: ''
+    put:
+      operationId: api_v1_run_environments_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunEnvironment'
+          description: ''
+    patch:
+      operationId: api_v1_run_environments_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRunEnvironment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRunEnvironment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRunEnvironment'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunEnvironment'
+          description: ''
+    delete:
+      operationId: api_v1_run_environments_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/run_environments/{uuid}/clone/:
+    post:
+      operationId: api_v1_run_environments_clone_create
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RunEnvironment'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunEnvironment'
+          description: ''
+  /api/v1/task_executions/:
+    get:
+      operationId: api_v1_task_executions_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProcessExecution'
+          description: ''
+    post:
+      operationId: api_v1_task_executions_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessExecution'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProcessExecution'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProcessExecution'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessExecution'
+          description: ''
+  /api/v1/task_executions/{uuid}/:
+    get:
+      operationId: api_v1_task_executions_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessExecution'
+          description: ''
+    put:
+      operationId: api_v1_task_executions_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessExecution'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProcessExecution'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProcessExecution'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessExecution'
+          description: ''
+    patch:
+      operationId: api_v1_task_executions_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProcessExecution'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProcessExecution'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProcessExecution'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessExecution'
+          description: ''
+    delete:
+      operationId: api_v1_task_executions_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/tasks/:
+    get:
+      operationId: api_v1_tasks_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProcessType'
+          description: ''
+    post:
+      operationId: api_v1_tasks_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProcessType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProcessType'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessType'
+          description: ''
+  /api/v1/tasks/{uuid}/:
+    get:
+      operationId: api_v1_tasks_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessType'
+          description: ''
+    put:
+      operationId: api_v1_tasks_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProcessType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProcessType'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessType'
+          description: ''
+    patch:
+      operationId: api_v1_tasks_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProcessType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProcessType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProcessType'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessType'
+          description: ''
+    delete:
+      operationId: api_v1_tasks_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/workflow_executions/:
+    get:
+      operationId: api_v1_workflow_executions_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkflowExecutionSummary'
+          description: ''
+    post:
+      operationId: api_v1_workflow_executions_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecution'
+          description: ''
+  /api/v1/workflow_executions/{uuid}/:
+    get:
+      operationId: api_v1_workflow_executions_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecution'
+          description: ''
+    put:
+      operationId: api_v1_workflow_executions_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecution'
+          description: ''
+    patch:
+      operationId: api_v1_workflow_executions_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowExecution'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowExecution'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowExecution'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecution'
+          description: ''
+    delete:
+      operationId: api_v1_workflow_executions_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/workflow_executions/{uuid}/retry/:
+    post:
+      operationId: api_v1_workflow_executions_retry_create
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecution'
+          description: ''
+  /api/v1/workflow_task_instances/:
+    get:
+      operationId: api_v1_workflow_task_instances_list
+      description: |-
+        The "workflow_process_type_instances" URL path is deprecated,
+        please use "workflow_task_instances" instead.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          description: ''
+    post:
+      operationId: api_v1_workflow_task_instances_create
+      description: |-
+        The "workflow_process_type_instances" URL path is deprecated,
+        please use "workflow_task_instances" instead.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          description: ''
+  /api/v1/workflow_task_instances/{uuid}/:
+    get:
+      operationId: api_v1_workflow_task_instances_retrieve
+      description: |-
+        The "workflow_process_type_instances" URL path is deprecated,
+        please use "workflow_task_instances" instead.
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          description: ''
+    put:
+      operationId: api_v1_workflow_task_instances_update
+      description: |-
+        The "workflow_process_type_instances" URL path is deprecated,
+        please use "workflow_task_instances" instead.
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          description: ''
+    patch:
+      operationId: api_v1_workflow_task_instances_partial_update
+      description: |-
+        The "workflow_process_type_instances" URL path is deprecated,
+        please use "workflow_task_instances" instead.
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowProcessTypeInstance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowProcessTypeInstance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowProcessTypeInstance'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          description: ''
+    delete:
+      operationId: api_v1_workflow_task_instances_destroy
+      description: |-
+        The "workflow_process_type_instances" URL path is deprecated,
+        please use "workflow_task_instances" instead.
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/workflow_transitions/:
+    get:
+      operationId: api_v1_workflow_transitions_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkflowTransition'
+          description: ''
+    post:
+      operationId: api_v1_workflow_transitions_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowTransition'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowTransition'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowTransition'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowTransition'
+          description: ''
+  /api/v1/workflow_transitions/{uuid}/:
+    get:
+      operationId: api_v1_workflow_transitions_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowTransition'
+          description: ''
+    put:
+      operationId: api_v1_workflow_transitions_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowTransition'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowTransition'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowTransition'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowTransition'
+          description: ''
+    patch:
+      operationId: api_v1_workflow_transitions_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowTransition'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowTransition'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflowTransition'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowTransition'
+          description: ''
+    delete:
+      operationId: api_v1_workflow_transitions_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/workflows/:
+    get:
+      operationId: api_v1_workflows_list
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkflowSummary'
+          description: ''
+    post:
+      operationId: api_v1_workflows_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+          description: ''
+  /api/v1/workflows/{uuid}/:
+    get:
+      operationId: api_v1_workflows_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+          description: ''
+    put:
+      operationId: api_v1_workflows_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+          description: ''
+    patch:
+      operationId: api_v1_workflows_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflow'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflow'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkflow'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+          description: ''
+    delete:
+      operationId: api_v1_workflows_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/workflows/{uuid}/clone/:
+    post:
+      operationId: api_v1_workflows_clone_create
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Workflow'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+          description: ''
+  /auth/jwt/create/:
+    post:
+      operationId: auth_jwt_create_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /auth/jwt/refresh/:
+    post:
+      operationId: auth_jwt_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /auth/jwt/verify/:
+    post:
+      operationId: auth_jwt_verify_create
+      description: |-
+        Takes a token and indicates if it is valid.  This view provides no
+        information about a token's fitness for a particular use.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenVerify'
+          description: ''
+components:
+  schemas:
+    AlertMethod:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        enabled:
+          type: boolean
+        method_details:
+          readOnly: true
+        notify_on_success:
+          type: boolean
+        notify_on_failure:
+          type: boolean
+        notify_on_timeout:
+          type: boolean
+        error_severity_on_missing_execution:
+          $ref: '#/components/schemas/ErrorSeverityOnMissingExecutionEnum'
+        error_severity_on_missing_heartbeat:
+          $ref: '#/components/schemas/ErrorSeverityOnMissingHeartbeatEnum'
+        error_severity_on_service_down:
+          $ref: '#/components/schemas/ErrorSeverityOnServiceDownEnum'
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - method_details
+      - name
+      - updated_at
+      - url
+      - uuid
+    AwsEcsServiceLoadBalancerDetails:
+      type: object
+      properties:
+        target_group_arn:
+          type: string
+          maxLength: 1000
+        container_name:
+          type: string
+          maxLength: 1000
+        container_port:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - container_port
+      - target_group_arn
+    DefaultEventSeverityEnum:
+      enum:
+      - critical
+      - error
+      - warning
+      - info
+      type: string
+    DefaultLaunchTypeEnum:
+      enum:
+      - EC2
+      - FARGATE
+      type: string
+    EcsServiceOptions:
+      type: object
+      properties:
+        load_balancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AwsEcsServiceLoadBalancerDetails'
+          readOnly: true
+        health_check_grace_period_seconds:
+          type: integer
+      required:
+      - load_balancers
+    EmailNotificationProfile:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        to_addresses:
+          type: array
+          items:
+            type: string
+            format: email
+          nullable: true
+        cc_addresses:
+          type: array
+          items:
+            type: string
+            format: email
+          nullable: true
+        bcc_addresses:
+          type: array
+          items:
+            type: string
+            format: email
+          nullable: true
+        subject_template:
+          type: string
+          maxLength: 1000
+        body_template:
+          type: string
+          maxLength: 10000
+      required:
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - name
+      - updated_at
+      - url
+      - uuid
+    ErrorSeverityOnMissingExecutionEnum:
+      enum:
+      - critical
+      - error
+      - warning
+      - info
+      type: string
+    ErrorSeverityOnMissingHeartbeatEnum:
+      enum:
+      - critical
+      - error
+      - warning
+      - info
+      type: string
+    ErrorSeverityOnServiceDownEnum:
+      enum:
+      - critical
+      - error
+      - warning
+      - info
+      type: string
+    ExecutionMethod:
+      type: object
+      properties:
+        type:
+          readOnly: true
+        task_definition_arn:
+          type: string
+          maxLength: 1000
+        allocated_cpu_units:
+          type: integer
+        allocated_memory_mb:
+          type: integer
+        task_arn:
+          type: string
+          maxLength: 1000
+        subnets:
+          type: array
+          items:
+            type: string
+        launch_type:
+          allOf:
+          - $ref: '#/components/schemas/LaunchTypeEnum'
+          default: FARGATE
+        cluster_arn:
+          type: string
+          maxLength: 1000
+        security_groups:
+          type: array
+          items:
+            type: string
+        assign_public_ip:
+          type: boolean
+        execution_role:
+          type: string
+          maxLength: 1000
+        task_role:
+          type: string
+          maxLength: 1000
+      required:
+      - type
+    FailureBehaviorEnum:
+      enum:
+      - always_fail_workflow
+      - fail_workflow_if_unhandled
+      - ignore
+      type: string
+    LaunchTypeEnum:
+      enum:
+      - EC2
+      - FARGATE
+      type: string
+    PagerDutyProfile:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        integration_key:
+          type: string
+          maxLength: 1000
+        default_event_severity:
+          $ref: '#/components/schemas/DefaultEventSeverityEnum'
+        default_event_component_template:
+          type: string
+          maxLength: 1000
+        default_event_group_template:
+          type: string
+          maxLength: 1000
+        default_event_class_template:
+          type: string
+          maxLength: 1000
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - integration_key
+      - name
+      - updated_at
+      - url
+      - uuid
+    PatchedAlertMethod:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        enabled:
+          type: boolean
+        method_details:
+          readOnly: true
+        notify_on_success:
+          type: boolean
+        notify_on_failure:
+          type: boolean
+        notify_on_timeout:
+          type: boolean
+        error_severity_on_missing_execution:
+          $ref: '#/components/schemas/ErrorSeverityOnMissingExecutionEnum'
+        error_severity_on_missing_heartbeat:
+          $ref: '#/components/schemas/ErrorSeverityOnMissingHeartbeatEnum'
+        error_severity_on_service_down:
+          $ref: '#/components/schemas/ErrorSeverityOnServiceDownEnum'
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedEcsServiceOptions:
+      type: object
+      properties:
+        load_balancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AwsEcsServiceLoadBalancerDetails'
+          readOnly: true
+        health_check_grace_period_seconds:
+          type: integer
+    PatchedEmailNotificationProfile:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        to_addresses:
+          type: array
+          items:
+            type: string
+            format: email
+          nullable: true
+        cc_addresses:
+          type: array
+          items:
+            type: string
+            format: email
+          nullable: true
+        bcc_addresses:
+          type: array
+          items:
+            type: string
+            format: email
+          nullable: true
+        subject_template:
+          type: string
+          maxLength: 1000
+        body_template:
+          type: string
+          maxLength: 10000
+    PatchedExecutionMethod:
+      type: object
+      properties:
+        type:
+          readOnly: true
+        task_definition_arn:
+          type: string
+          maxLength: 1000
+        allocated_cpu_units:
+          type: integer
+        allocated_memory_mb:
+          type: integer
+        task_arn:
+          type: string
+          maxLength: 1000
+        subnets:
+          type: array
+          items:
+            type: string
+        launch_type:
+          allOf:
+          - $ref: '#/components/schemas/LaunchTypeEnum'
+          default: FARGATE
+        cluster_arn:
+          type: string
+          maxLength: 1000
+        security_groups:
+          type: array
+          items:
+            type: string
+        assign_public_ip:
+          type: boolean
+        execution_role:
+          type: string
+          maxLength: 1000
+        task_role:
+          type: string
+          maxLength: 1000
+    PatchedPagerDutyProfile:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        integration_key:
+          type: string
+          maxLength: 1000
+        default_event_severity:
+          $ref: '#/components/schemas/DefaultEventSeverityEnum'
+        default_event_component_template:
+          type: string
+          maxLength: 1000
+        default_event_group_template:
+          type: string
+          maxLength: 1000
+        default_event_class_template:
+          type: string
+          maxLength: 1000
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedProcessExecution:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        dashboard_url:
+          type: string
+          readOnly: true
+        process_type:
+          readOnly: true
+        process_version_number:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        process_version_text:
+          type: string
+          nullable: true
+          maxLength: 200
+        process_version_signature:
+          type: string
+          nullable: true
+          maxLength: 200
+        commit_url:
+          type: string
+          nullable: true
+          readOnly: true
+        other_instance_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        hostname:
+          type: string
+          nullable: true
+          maxLength: 1000
+        environment_variables_overrides:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        execution_method:
+          $ref: '#/components/schemas/PatchedExecutionMethod'
+        status:
+          type: string
+        started_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        started_at:
+          type: string
+          format: date-time
+          readOnly: true
+        finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        marked_done_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        marked_done_at:
+          type: string
+          format: date-time
+          nullable: true
+        marked_outdated_at:
+          type: string
+          format: date-time
+          nullable: true
+        killed_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        kill_started_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_error_code:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        stop_reason:
+          type: string
+        last_heartbeat_at:
+          type: string
+          format: date-time
+          nullable: true
+        failed_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        timed_out_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        exit_code:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        last_status_message:
+          type: string
+          nullable: true
+          maxLength: 5000
+        error_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        skipped_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        expected_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        success_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        other_runtime_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        current_cpu_units:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        mean_cpu_units:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_cpu_units:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        current_memory_mb:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        mean_memory_mb:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_memory_mb:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        wrapper_version:
+          type: string
+          nullable: true
+          maxLength: 200
+        wrapper_log_level:
+          type: string
+          nullable: true
+          maxLength: 20
+        deployment:
+          type: string
+          nullable: true
+          maxLength: 200
+        process_command:
+          type: string
+          nullable: true
+          maxLength: 5000
+        is_service:
+          type: boolean
+          nullable: true
+        process_max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_conflicting_age_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        prevent_offline_execution:
+          type: boolean
+          nullable: true
+        process_timeout_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        process_termination_grace_period_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        process_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        process_retry_delay_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        schedule:
+          type: string
+          nullable: true
+          maxLength: 1000
+        heartbeat_interval_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        api_base_url:
+          type: string
+          maxLength: 200
+        api_timeout_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        api_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        api_max_retries_for_final_update:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        api_max_retries_for_process_creation_conflict:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        api_retry_delay_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        status_update_interval_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        status_update_port:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        status_update_message_max_bytes:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        debug_log_tail:
+          type: string
+          nullable: true
+          maxLength: 5000000
+        error_log_tail:
+          type: string
+          nullable: true
+          maxLength: 5000000
+        embedded_mode:
+          type: boolean
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedProcessType:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        max_manual_start_delay_before_alert_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_manual_start_delay_before_abandonment_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        heartbeat_interval_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: 10
+          nullable: true
+        max_heartbeat_lateness_before_alert_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_heartbeat_lateness_before_abandonment_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        schedule:
+          type: string
+          maxLength: 1000
+        is_service:
+          type: boolean
+          readOnly: true
+        service_instance_count:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        min_service_instance_count:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        project_url:
+          type: string
+          maxLength: 1000
+        log_query:
+          type: string
+          maxLength: 1000
+        logs_url:
+          readOnly: true
+        links:
+          readOnly: true
+        run_environment:
+          readOnly: true
+        execution_method_capability:
+          $ref: '#/components/schemas/PatchedProcessTypeExecutionMethodCapability'
+        alert_methods:
+          readOnly: true
+        other_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        latest_process_execution:
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        was_auto_created:
+          type: boolean
+          nullable: true
+        enabled:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedProcessTypeExecutionMethodCapability:
+      type: object
+      properties:
+        type:
+          readOnly: true
+        default_subnets:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_launch_type:
+          allOf:
+          - $ref: '#/components/schemas/DefaultLaunchTypeEnum'
+          nullable: true
+          default: FARGATE
+        supported_launch_types:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_cluster_arn:
+          type: string
+          maxLength: 1000
+        default_security_groups:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_assign_public_ip:
+          type: boolean
+          nullable: true
+        default_execution_role:
+          type: string
+          maxLength: 1000
+        default_task_role:
+          type: string
+          maxLength: 1000
+        task_definition_arn:
+          type: string
+          maxLength: 1000
+        allocated_cpu_units:
+          type: integer
+        allocated_memory_mb:
+          type: integer
+        main_container_name:
+          type: string
+          maxLength: 1000
+        service_options:
+          $ref: '#/components/schemas/PatchedEcsServiceOptions'
+    PatchedRunEnvironment:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        aws_account_id:
+          type: string
+          maxLength: 200
+        aws_default_region:
+          type: string
+          maxLength: 20
+        aws_access_key:
+          type: string
+          maxLength: 100
+        aws_assumed_role_external_id:
+          type: string
+          maxLength: 1000
+        aws_events_role_arn:
+          type: string
+          maxLength: 100
+        aws_workflow_starter_lambda_arn:
+          type: string
+          maxLength: 1000
+        aws_workflow_starter_access_key:
+          type: string
+          maxLength: 1000
+        default_alert_methods:
+          readOnly: true
+        execution_method_capabilities:
+          readOnly: true
+    PatchedWorkflow:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        schedule:
+          type: string
+          maxLength: 1000
+        max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        latest_workflow_execution:
+          $ref: '#/components/schemas/PatchedWorkflowExecutionSummary'
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        enabled:
+          type: boolean
+        alert_methods:
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        workflow_process_type_instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          readOnly: true
+        workflow_transitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTransition'
+          readOnly: true
+    PatchedWorkflowExecution:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        dashboard_url:
+          type: string
+          readOnly: true
+        workflow:
+          readOnly: true
+        status:
+          type: string
+        run_reason:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        started_at:
+          type: string
+          format: date-time
+          readOnly: true
+        started_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        last_heartbeat_at:
+          type: string
+          format: date-time
+          nullable: true
+        stop_reason:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        marked_done_at:
+          type: string
+          format: date-time
+          nullable: true
+        marked_done_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        kill_started_at:
+          type: string
+          format: date-time
+          nullable: true
+        killed_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        kill_finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_error_code:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        failed_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        timed_out_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        workflow_snapshot:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        workflow_process_type_instance_executions:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowProcessTypeInstanceExecution'
+          readOnly: true
+        workflow_transition_evaluations:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTransitionEvaluation'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedWorkflowExecutionSummary:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        dashboard_url:
+          type: string
+          readOnly: true
+        status:
+          type: string
+        run_reason:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        started_at:
+          type: string
+          format: date-time
+          readOnly: true
+        finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        last_heartbeat_at:
+          type: string
+          format: date-time
+          nullable: true
+        stop_reason:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        marked_done_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_started_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_error_code:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        failed_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        timed_out_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedWorkflowProcessTypeInstance:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        workflow:
+          readOnly: true
+        process_type:
+          readOnly: true
+        start_transition_condition:
+          $ref: '#/components/schemas/StartTransitionConditionEnum'
+        max_complete_executions:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        should_eval_transitions_after_first_execution:
+          type: boolean
+        condition_count_threshold:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        condition_ratio_threshold:
+          type: number
+          format: float
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        failure_behavior:
+          $ref: '#/components/schemas/FailureBehaviorEnum'
+        allow_workflow_execution_after_failure:
+          type: boolean
+        timeout_behavior:
+          $ref: '#/components/schemas/TimeoutBehaviorEnum'
+        allow_workflow_execution_after_timeout:
+          type: boolean
+        environment_variables_overrides:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        allocated_cpu_units:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        allocated_memory_mb:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        use_process_type_alert_methods:
+          type: boolean
+        ui_color:
+          type: string
+          maxLength: 16
+        ui_icon_type:
+          type: string
+          maxLength: 50
+        ui_scale:
+          type: number
+          format: float
+          nullable: true
+        ui_center_margin_top:
+          type: number
+          format: float
+          nullable: true
+        ui_center_margin_left:
+          type: number
+          format: float
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedWorkflowTransition:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        description:
+          type: string
+          maxLength: 5000
+        from_workflow_process_type_instance:
+          readOnly: true
+        to_workflow_process_type_instance:
+          readOnly: true
+        rule_type:
+          $ref: '#/components/schemas/RuleTypeEnum'
+        exit_codes:
+          type: array
+          items:
+            type: string
+          nullable: true
+        threshold_property:
+          $ref: '#/components/schemas/ThresholdPropertyEnum'
+        custom_expression:
+          type: string
+          maxLength: 5000
+        priority:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        ui_color:
+          type: string
+          maxLength: 16
+        ui_line_style:
+          type: string
+          maxLength: 50
+        ui_scale:
+          type: number
+          format: float
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    ProcessExecution:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        dashboard_url:
+          type: string
+          readOnly: true
+        process_type:
+          readOnly: true
+        process_version_number:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        process_version_text:
+          type: string
+          nullable: true
+          maxLength: 200
+        process_version_signature:
+          type: string
+          nullable: true
+          maxLength: 200
+        commit_url:
+          type: string
+          nullable: true
+          readOnly: true
+        other_instance_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        hostname:
+          type: string
+          nullable: true
+          maxLength: 1000
+        environment_variables_overrides:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        execution_method:
+          $ref: '#/components/schemas/ExecutionMethod'
+        status:
+          type: string
+        started_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        started_at:
+          type: string
+          format: date-time
+          readOnly: true
+        finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        marked_done_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        marked_done_at:
+          type: string
+          format: date-time
+          nullable: true
+        marked_outdated_at:
+          type: string
+          format: date-time
+          nullable: true
+        killed_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        kill_started_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_error_code:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        stop_reason:
+          type: string
+        last_heartbeat_at:
+          type: string
+          format: date-time
+          nullable: true
+        failed_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        timed_out_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        exit_code:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        last_status_message:
+          type: string
+          nullable: true
+          maxLength: 5000
+        error_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        skipped_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        expected_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        success_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        other_runtime_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        current_cpu_units:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        mean_cpu_units:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_cpu_units:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        current_memory_mb:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        mean_memory_mb:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_memory_mb:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        wrapper_version:
+          type: string
+          nullable: true
+          maxLength: 200
+        wrapper_log_level:
+          type: string
+          nullable: true
+          maxLength: 20
+        deployment:
+          type: string
+          nullable: true
+          maxLength: 200
+        process_command:
+          type: string
+          nullable: true
+          maxLength: 5000
+        is_service:
+          type: boolean
+          nullable: true
+        process_max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_conflicting_age_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        prevent_offline_execution:
+          type: boolean
+          nullable: true
+        process_timeout_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        process_termination_grace_period_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        process_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        process_retry_delay_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        schedule:
+          type: string
+          nullable: true
+          maxLength: 1000
+        heartbeat_interval_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        api_base_url:
+          type: string
+          maxLength: 200
+        api_timeout_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        api_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        api_max_retries_for_final_update:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        api_max_retries_for_process_creation_conflict:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        api_retry_delay_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        status_update_interval_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        status_update_port:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        status_update_message_max_bytes:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        debug_log_tail:
+          type: string
+          nullable: true
+          maxLength: 5000000
+        error_log_tail:
+          type: string
+          nullable: true
+          maxLength: 5000000
+        embedded_mode:
+          type: boolean
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - commit_url
+      - created_at
+      - dashboard_url
+      - killed_by
+      - marked_done_by
+      - process_type
+      - started_at
+      - started_by
+      - status
+      - updated_at
+      - url
+      - uuid
+    ProcessType:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        max_manual_start_delay_before_alert_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_manual_start_delay_before_abandonment_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        heartbeat_interval_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: 10
+          nullable: true
+        max_heartbeat_lateness_before_alert_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_heartbeat_lateness_before_abandonment_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        schedule:
+          type: string
+          maxLength: 1000
+        is_service:
+          type: boolean
+          readOnly: true
+        service_instance_count:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        min_service_instance_count:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        project_url:
+          type: string
+          maxLength: 1000
+        log_query:
+          type: string
+          maxLength: 1000
+        logs_url:
+          readOnly: true
+        links:
+          readOnly: true
+        run_environment:
+          readOnly: true
+        execution_method_capability:
+          $ref: '#/components/schemas/ProcessTypeExecutionMethodCapability'
+        alert_methods:
+          readOnly: true
+        other_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        latest_process_execution:
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        was_auto_created:
+          type: boolean
+          nullable: true
+        enabled:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - alert_methods
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - execution_method_capability
+      - is_service
+      - latest_process_execution
+      - links
+      - logs_url
+      - name
+      - run_environment
+      - updated_at
+      - url
+      - uuid
+    ProcessTypeExecutionMethodCapability:
+      type: object
+      properties:
+        type:
+          readOnly: true
+        default_subnets:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_launch_type:
+          allOf:
+          - $ref: '#/components/schemas/DefaultLaunchTypeEnum'
+          nullable: true
+          default: FARGATE
+        supported_launch_types:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_cluster_arn:
+          type: string
+          maxLength: 1000
+        default_security_groups:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_assign_public_ip:
+          type: boolean
+          nullable: true
+        default_execution_role:
+          type: string
+          maxLength: 1000
+        default_task_role:
+          type: string
+          maxLength: 1000
+        task_definition_arn:
+          type: string
+          maxLength: 1000
+        allocated_cpu_units:
+          type: integer
+        allocated_memory_mb:
+          type: integer
+        main_container_name:
+          type: string
+          maxLength: 1000
+        service_options:
+          $ref: '#/components/schemas/EcsServiceOptions'
+      required:
+      - type
+    RuleTypeEnum:
+      enum:
+      - always
+      - success
+      - failure
+      - timeout
+      - exit_code
+      - threshold
+      - custom
+      - default
+      type: string
+    RunEnvironment:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        aws_account_id:
+          type: string
+          maxLength: 200
+        aws_default_region:
+          type: string
+          maxLength: 20
+        aws_access_key:
+          type: string
+          maxLength: 100
+        aws_assumed_role_external_id:
+          type: string
+          maxLength: 1000
+        aws_events_role_arn:
+          type: string
+          maxLength: 100
+        aws_workflow_starter_lambda_arn:
+          type: string
+          maxLength: 1000
+        aws_workflow_starter_access_key:
+          type: string
+          maxLength: 1000
+        default_alert_methods:
+          readOnly: true
+        execution_method_capabilities:
+          readOnly: true
+      required:
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - default_alert_methods
+      - execution_method_capabilities
+      - name
+      - updated_at
+      - url
+      - uuid
+    StartTransitionConditionEnum:
+      enum:
+      - all
+      - any
+      - count_at_least
+      - ratio_at_least
+      type: string
+    ThresholdPropertyEnum:
+      enum:
+      - execution_time
+      - success_ratio
+      - failure_ratio
+      - skipped_ratio
+      type: string
+    TimeoutBehaviorEnum:
+      enum:
+      - always_fail_workflow
+      - always_timeout_workflow
+      - fail_workflow_if_unhandled
+      - timeout_workflow_if_unhandled
+      - ignore
+      type: string
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - password
+      - username
+    TokenRefresh:
+      type: object
+      properties:
+        refresh:
+          type: string
+      required:
+      - refresh
+    TokenVerify:
+      type: object
+      properties:
+        token:
+          type: string
+      required:
+      - token
+    Workflow:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        schedule:
+          type: string
+          maxLength: 1000
+        max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        latest_workflow_execution:
+          $ref: '#/components/schemas/WorkflowExecutionSummary'
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        enabled:
+          type: boolean
+        alert_methods:
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        workflow_process_type_instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+          readOnly: true
+        workflow_transitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTransition'
+          readOnly: true
+      required:
+      - alert_methods
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - name
+      - updated_at
+      - url
+      - uuid
+      - workflow_process_type_instances
+      - workflow_transitions
+    WorkflowExecution:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        dashboard_url:
+          type: string
+          readOnly: true
+        workflow:
+          readOnly: true
+        status:
+          type: string
+        run_reason:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        started_at:
+          type: string
+          format: date-time
+          readOnly: true
+        started_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        last_heartbeat_at:
+          type: string
+          format: date-time
+          nullable: true
+        stop_reason:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        marked_done_at:
+          type: string
+          format: date-time
+          nullable: true
+        marked_done_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        kill_started_at:
+          type: string
+          format: date-time
+          nullable: true
+        killed_by:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        kill_finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_error_code:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        failed_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        timed_out_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        workflow_snapshot:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        workflow_process_type_instance_executions:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowProcessTypeInstanceExecution'
+          readOnly: true
+        workflow_transition_evaluations:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTransitionEvaluation'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - dashboard_url
+      - killed_by
+      - marked_done_by
+      - started_at
+      - started_by
+      - status
+      - updated_at
+      - url
+      - uuid
+      - workflow
+      - workflow_process_type_instance_executions
+      - workflow_transition_evaluations
+    WorkflowExecutionSummary:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        dashboard_url:
+          type: string
+          readOnly: true
+        status:
+          type: string
+        run_reason:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        started_at:
+          type: string
+          format: date-time
+          readOnly: true
+        finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        last_heartbeat_at:
+          type: string
+          format: date-time
+          nullable: true
+        stop_reason:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        marked_done_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_started_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        kill_error_code:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        failed_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        timed_out_attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - dashboard_url
+      - started_at
+      - status
+      - updated_at
+      - url
+      - uuid
+    WorkflowProcessTypeInstance:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        workflow:
+          readOnly: true
+        process_type:
+          readOnly: true
+        start_transition_condition:
+          $ref: '#/components/schemas/StartTransitionConditionEnum'
+        max_complete_executions:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        should_eval_transitions_after_first_execution:
+          type: boolean
+        condition_count_threshold:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        condition_ratio_threshold:
+          type: number
+          format: float
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        failure_behavior:
+          $ref: '#/components/schemas/FailureBehaviorEnum'
+        allow_workflow_execution_after_failure:
+          type: boolean
+        timeout_behavior:
+          $ref: '#/components/schemas/TimeoutBehaviorEnum'
+        allow_workflow_execution_after_timeout:
+          type: boolean
+        environment_variables_overrides:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        allocated_cpu_units:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        allocated_memory_mb:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        use_process_type_alert_methods:
+          type: boolean
+        ui_color:
+          type: string
+          maxLength: 16
+        ui_icon_type:
+          type: string
+          maxLength: 50
+        ui_scale:
+          type: number
+          format: float
+          nullable: true
+        ui_center_margin_top:
+          type: number
+          format: float
+          nullable: true
+        ui_center_margin_left:
+          type: number
+          format: float
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - name
+      - process_type
+      - updated_at
+      - url
+      - uuid
+      - workflow
+    WorkflowProcessTypeInstanceExecution:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        workflow_execution:
+          readOnly: true
+        workflow_process_type_instance:
+          readOnly: true
+        process_execution:
+          $ref: '#/components/schemas/ProcessExecution'
+        is_latest:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - process_execution
+      - uuid
+      - workflow_execution
+      - workflow_process_type_instance
+    WorkflowSummary:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        schedule:
+          type: string
+          maxLength: 1000
+        max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        latest_workflow_execution:
+          $ref: '#/components/schemas/WorkflowExecutionSummary'
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          type: string
+          readOnly: true
+        enabled:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - name
+      - updated_at
+      - url
+      - uuid
+    WorkflowTransition:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        description:
+          type: string
+          maxLength: 5000
+        from_workflow_process_type_instance:
+          readOnly: true
+        to_workflow_process_type_instance:
+          readOnly: true
+        rule_type:
+          $ref: '#/components/schemas/RuleTypeEnum'
+        exit_codes:
+          type: array
+          items:
+            type: string
+          nullable: true
+        threshold_property:
+          $ref: '#/components/schemas/ThresholdPropertyEnum'
+        custom_expression:
+          type: string
+          maxLength: 5000
+        priority:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        ui_color:
+          type: string
+          maxLength: 16
+        ui_line_style:
+          type: string
+          maxLength: 50
+        ui_scale:
+          type: number
+          format: float
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - from_workflow_process_type_instance
+      - rule_type
+      - to_workflow_process_type_instance
+      - updated_at
+      - url
+      - uuid
+    WorkflowTransitionEvaluation:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        result:
+          type: boolean
+        workflow_transition:
+          readOnly: true
+        workflow_execution:
+          readOnly: true
+        from_workflow_process_type_instance_execution:
+          type: string
+          nullable: true
+          readOnly: true
+        evaluated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - evaluated_at
+      - from_workflow_process_type_instance_execution
+      - result
+      - uuid
+      - workflow_execution
+      - workflow_transition
+  securitySchemes:
+    tokenAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Token
+externalDocs:
+  url: https://docs.cloudreactor.io/
+  description: CloudReactor Documentation Home
