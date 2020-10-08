@@ -7,9 +7,9 @@ info:
     name: Jeff Tsay
     email: jeff@cloudreactor.io
 paths:
-  /api-docs/:
+  /api-docs/schema/:
     get:
-      operationId: api_docs_retrieve
+      operationId: api_docs_schema_retrieve
       description: |-
         OpenApi3 schema for this API. Format can be selected via content negotiation.
 
@@ -160,6 +160,18 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -169,21 +181,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/AlertMethod'
+                $ref: '#/components/schemas/PaginatedAlertMethodList'
           description: ''
     post:
       operationId: api_v1_alert_methods_create
@@ -220,6 +218,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -240,6 +239,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -272,6 +272,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -303,6 +304,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -311,6 +313,40 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/v1/alert_methods/{uuid}/clone/:
+    post:
+      operationId: api_v1_alert_methods_clone_create
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AlertMethod'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertMethod'
+          description: ''
   /api/v1/email_notification_profiles/:
     get:
       operationId: api_v1_email_notification_profiles_list
@@ -328,6 +364,18 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -337,21 +385,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/EmailNotificationProfile'
+                $ref: '#/components/schemas/PaginatedEmailNotificationProfileList'
           description: ''
     post:
       operationId: api_v1_email_notification_profiles_create
@@ -388,6 +422,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -408,6 +443,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -440,6 +476,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -471,6 +508,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -479,6 +517,40 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/v1/email_notification_profiles/{uuid}/clone/:
+    post:
+      operationId: api_v1_email_notification_profiles_clone_create
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmailNotificationProfile'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailNotificationProfile'
+          description: ''
   /api/v1/pagerduty_profiles/:
     get:
       operationId: api_v1_pagerduty_profiles_list
@@ -496,6 +568,18 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -505,21 +589,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/PagerDutyProfile'
+                $ref: '#/components/schemas/PaginatedPagerDutyProfileList'
           description: ''
     post:
       operationId: api_v1_pagerduty_profiles_create
@@ -556,6 +626,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -576,6 +647,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -608,6 +680,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -639,6 +712,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -647,6 +721,40 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/v1/pagerduty_profiles/{uuid}/clone/:
+    post:
+      operationId: api_v1_pagerduty_profiles_clone_create
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PagerDutyProfile'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagerDutyProfile'
+          description: ''
   /api/v1/run_environments/:
     get:
       operationId: api_v1_run_environments_list
@@ -664,6 +772,18 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -673,21 +793,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/RunEnvironment'
+                $ref: '#/components/schemas/PaginatedRunEnvironmentList'
           description: ''
     post:
       operationId: api_v1_run_environments_create
@@ -724,6 +830,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -744,6 +851,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -776,6 +884,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -807,6 +916,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -824,6 +934,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -865,6 +976,24 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: process_type__uuid
+        schema:
+          type: string
+          format: uuid
+        description: process_type__uuid
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -874,21 +1003,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ProcessExecution'
+                $ref: '#/components/schemas/PaginatedProcessExecutionList'
           description: ''
     post:
       operationId: api_v1_task_executions_create
@@ -925,6 +1040,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -945,6 +1061,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -977,6 +1094,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1008,6 +1126,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1033,6 +1152,18 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -1042,21 +1173,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ProcessType'
+                $ref: '#/components/schemas/PaginatedProcessTypeList'
           description: ''
     post:
       operationId: api_v1_tasks_create
@@ -1093,6 +1210,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1113,6 +1231,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1145,6 +1264,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1176,6 +1296,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1201,6 +1322,24 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: workflow__uuid
+        schema:
+          type: string
+          format: uuid
+        description: workflow__uuid
       tags:
       - api
       security:
@@ -1210,21 +1349,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/WorkflowExecutionSummary'
+                $ref: '#/components/schemas/PaginatedWorkflowExecutionSummaryList'
           description: ''
     post:
       operationId: api_v1_workflow_executions_create
@@ -1261,6 +1386,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1281,6 +1407,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1313,6 +1440,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1344,6 +1472,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1361,6 +1490,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1404,6 +1534,18 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -1413,21 +1555,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+                $ref: '#/components/schemas/PaginatedWorkflowProcessTypeInstanceList'
           description: ''
     post:
       operationId: api_v1_workflow_task_instances_create
@@ -1468,6 +1596,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1490,6 +1619,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1524,6 +1654,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1557,6 +1688,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1570,6 +1702,11 @@ paths:
       operationId: api_v1_workflow_transitions_list
       description: ''
       parameters:
+      - in: query
+        name: description
+        schema:
+          type: string
+        description: description
       - name: limit
         required: false
         in: query
@@ -1582,6 +1719,18 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -1591,21 +1740,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/WorkflowTransition'
+                $ref: '#/components/schemas/PaginatedWorkflowTransitionList'
           description: ''
     post:
       operationId: api_v1_workflow_transitions_create
@@ -1642,6 +1777,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1662,6 +1798,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1694,6 +1831,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1725,6 +1863,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1750,6 +1889,18 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -1759,21 +1910,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 123
-                  next:
-                    type: string
-                    nullable: true
-                  previous:
-                    type: string
-                    nullable: true
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/WorkflowSummary'
+                $ref: '#/components/schemas/PaginatedWorkflowSummaryList'
           description: ''
     post:
       operationId: api_v1_workflows_create
@@ -1810,6 +1947,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1830,6 +1968,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1862,6 +2001,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1893,6 +2033,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -1910,6 +2051,7 @@ paths:
         name: uuid
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -2040,6 +2182,7 @@ components:
         enabled:
           type: boolean
         method_details:
+          type: string
           readOnly: true
         notify_on_success:
           type: boolean
@@ -2059,7 +2202,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         created_at:
           type: string
@@ -2145,7 +2289,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         created_at:
           type: string
@@ -2213,6 +2358,7 @@ components:
       type: object
       properties:
         type:
+          type: string
           readOnly: true
         task_definition_arn:
           type: string
@@ -2255,6 +2401,23 @@ components:
       - fail_workflow_if_unhandled
       - ignore
       type: string
+    Group:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        url:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - id
+      - name
+      - url
     LaunchTypeEnum:
       enum:
       - EC2
@@ -2300,7 +2463,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         created_at:
           type: string
@@ -2320,6 +2484,166 @@ components:
       - updated_at
       - url
       - uuid
+    PaginatedAlertMethodList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertMethod'
+    PaginatedEmailNotificationProfileList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailNotificationProfile'
+    PaginatedPagerDutyProfileList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PagerDutyProfile'
+    PaginatedProcessExecutionList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessExecution'
+    PaginatedProcessTypeList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessType'
+    PaginatedRunEnvironmentList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunEnvironment'
+    PaginatedWorkflowExecutionSummaryList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionSummary'
+    PaginatedWorkflowProcessTypeInstanceList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+    PaginatedWorkflowSummaryList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowSummary'
+    PaginatedWorkflowTransitionList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTransition'
     PatchedAlertMethod:
       type: object
       properties:
@@ -2343,6 +2667,7 @@ components:
         enabled:
           type: boolean
         method_details:
+          type: string
           readOnly: true
         notify_on_success:
           type: boolean
@@ -2362,7 +2687,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         created_at:
           type: string
@@ -2408,7 +2734,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         created_at:
           type: string
@@ -2446,6 +2773,7 @@ components:
       type: object
       properties:
         type:
+          type: string
           readOnly: true
         task_definition_arn:
           type: string
@@ -2520,7 +2848,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         created_at:
           type: string
@@ -2550,6 +2879,7 @@ components:
           type: string
           readOnly: true
         process_type:
+          type: string
           readOnly: true
         process_version_number:
           type: integer
@@ -2920,20 +3250,25 @@ components:
           type: string
           maxLength: 1000
         logs_url:
+          type: string
           readOnly: true
         links:
+          type: string
           readOnly: true
         run_environment:
+          type: string
           readOnly: true
         execution_method_capability:
           $ref: '#/components/schemas/PatchedProcessTypeExecutionMethodCapability'
         alert_methods:
+          type: string
           readOnly: true
         other_metadata:
           type: object
           additionalProperties: {}
           nullable: true
         latest_process_execution:
+          type: string
           readOnly: true
         created_by_user:
           type: string
@@ -2941,7 +3276,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         was_auto_created:
           type: boolean
@@ -2960,6 +3296,7 @@ components:
       type: object
       properties:
         type:
+          type: string
           readOnly: true
         default_subnets:
           type: array
@@ -2974,7 +3311,11 @@ components:
         supported_launch_types:
           type: array
           items:
+            enum:
+            - EC2
+            - FARGATE
             type: string
+            default: FARGATE
           nullable: true
         default_cluster_arn:
           type: string
@@ -3031,7 +3372,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         created_at:
           type: string
@@ -3063,8 +3405,10 @@ components:
           type: string
           maxLength: 1000
         default_alert_methods:
+          type: string
           readOnly: true
         execution_method_capabilities:
+          type: string
           readOnly: true
     PatchedWorkflow:
       type: object
@@ -3111,11 +3455,13 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         enabled:
           type: boolean
         alert_methods:
+          type: string
           readOnly: true
         created_at:
           type: string
@@ -3150,6 +3496,7 @@ components:
           type: string
           readOnly: true
         workflow:
+          type: string
           readOnly: true
         status:
           type: string
@@ -3324,8 +3671,10 @@ components:
           type: string
           maxLength: 5000
         workflow:
+          type: string
           readOnly: true
         process_type:
+          type: string
           readOnly: true
         start_transition_condition:
           $ref: '#/components/schemas/StartTransitionConditionEnum'
@@ -3419,8 +3768,10 @@ components:
           type: string
           maxLength: 5000
         from_workflow_process_type_instance:
+          type: string
           readOnly: true
         to_workflow_process_type_instance:
+          type: string
           readOnly: true
         rule_type:
           $ref: '#/components/schemas/RuleTypeEnum'
@@ -3477,6 +3828,7 @@ components:
           type: string
           readOnly: true
         process_type:
+          type: string
           readOnly: true
         process_version_number:
           type: integer
@@ -3860,20 +4212,25 @@ components:
           type: string
           maxLength: 1000
         logs_url:
+          type: string
           readOnly: true
         links:
+          type: string
           readOnly: true
         run_environment:
+          type: string
           readOnly: true
         execution_method_capability:
           $ref: '#/components/schemas/ProcessTypeExecutionMethodCapability'
         alert_methods:
+          type: string
           readOnly: true
         other_metadata:
           type: object
           additionalProperties: {}
           nullable: true
         latest_process_execution:
+          type: string
           readOnly: true
         created_by_user:
           type: string
@@ -3881,7 +4238,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         was_auto_created:
           type: boolean
@@ -3916,6 +4274,7 @@ components:
       type: object
       properties:
         type:
+          type: string
           readOnly: true
         default_subnets:
           type: array
@@ -3930,7 +4289,11 @@ components:
         supported_launch_types:
           type: array
           items:
+            enum:
+            - EC2
+            - FARGATE
             type: string
+            default: FARGATE
           nullable: true
         default_cluster_arn:
           type: string
@@ -4000,7 +4363,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         created_at:
           type: string
@@ -4032,8 +4396,10 @@ components:
           type: string
           maxLength: 1000
         default_alert_methods:
+          type: string
           readOnly: true
         execution_method_capabilities:
+          type: string
           readOnly: true
       required:
       - created_at
@@ -4138,11 +4504,13 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         enabled:
           type: boolean
         alert_methods:
+          type: string
           readOnly: true
         created_at:
           type: string
@@ -4189,6 +4557,7 @@ components:
           type: string
           readOnly: true
         workflow:
+          type: string
           readOnly: true
         status:
           type: string
@@ -4385,8 +4754,10 @@ components:
           type: string
           maxLength: 5000
         workflow:
+          type: string
           readOnly: true
         process_type:
+          type: string
           readOnly: true
         start_transition_condition:
           $ref: '#/components/schemas/StartTransitionConditionEnum'
@@ -4481,8 +4852,10 @@ components:
           format: uuid
           readOnly: true
         workflow_execution:
+          type: string
           readOnly: true
         workflow_process_type_instance:
+          type: string
           readOnly: true
         process_execution:
           $ref: '#/components/schemas/ProcessExecution'
@@ -4543,7 +4916,8 @@ components:
             only.
           readOnly: true
         created_by_group:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Group'
           readOnly: true
         enabled:
           type: boolean
@@ -4579,8 +4953,10 @@ components:
           type: string
           maxLength: 5000
         from_workflow_process_type_instance:
+          type: string
           readOnly: true
         to_workflow_process_type_instance:
+          type: string
           readOnly: true
         rule_type:
           $ref: '#/components/schemas/RuleTypeEnum'
@@ -4635,8 +5011,10 @@ components:
         result:
           type: boolean
         workflow_transition:
+          type: string
           readOnly: true
         workflow_execution:
+          type: string
           readOnly: true
         from_workflow_process_type_instance_execution:
           type: string
