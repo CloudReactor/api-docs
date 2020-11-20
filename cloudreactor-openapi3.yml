@@ -2147,8 +2147,8 @@ components:
       type: string
     DefaultLaunchTypeEnum:
       enum:
-      - EC2
       - FARGATE
+      - EC2
       type: string
     EcsServiceOptions:
       type: object
@@ -2323,8 +2323,8 @@ components:
       - url
     LaunchTypeEnum:
       enum:
-      - EC2
       - FARGATE
+      - EC2
       type: string
     NameAndUuid:
       type: object
@@ -3275,8 +3275,8 @@ components:
           type: array
           items:
             enum:
-            - EC2
             - FARGATE
+            - EC2
             type: string
             default: FARGATE
           nullable: true
@@ -4275,8 +4275,8 @@ components:
           type: array
           items:
             enum:
-            - EC2
             - FARGATE
+            - EC2
             type: string
             default: FARGATE
           nullable: true
