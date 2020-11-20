@@ -7,142 +7,6 @@ info:
     name: Jeff Tsay
     email: jeff@cloudreactor.io
 paths:
-  /api-docs/schema/:
-    get:
-      operationId: api_docs_schema_retrieve
-      description: |-
-        OpenApi3 schema for this API. Format can be selected via content negotiation.
-
-        - YAML: application/vnd.oai.openapi
-        - JSON: application/vnd.oai.openapi+json
-      parameters:
-      - in: query
-        name: format
-        schema:
-          type: string
-          enum:
-          - json
-          - yaml
-      - in: query
-        name: lang
-        schema:
-          type: string
-          enum:
-          - af
-          - ar
-          - ast
-          - az
-          - be
-          - bg
-          - bn
-          - br
-          - bs
-          - ca
-          - cs
-          - cy
-          - da
-          - de
-          - dsb
-          - el
-          - en
-          - en-au
-          - en-gb
-          - eo
-          - es
-          - es-ar
-          - es-co
-          - es-mx
-          - es-ni
-          - es-ve
-          - et
-          - eu
-          - fa
-          - fi
-          - fr
-          - fy
-          - ga
-          - gd
-          - gl
-          - he
-          - hi
-          - hr
-          - hsb
-          - hu
-          - hy
-          - ia
-          - id
-          - io
-          - is
-          - it
-          - ja
-          - ka
-          - kab
-          - kk
-          - km
-          - kn
-          - ko
-          - lb
-          - lt
-          - lv
-          - mk
-          - ml
-          - mn
-          - mr
-          - my
-          - nb
-          - ne
-          - nl
-          - nn
-          - os
-          - pa
-          - pl
-          - pt
-          - pt-br
-          - ro
-          - ru
-          - sk
-          - sl
-          - sq
-          - sr
-          - sr-latn
-          - sv
-          - sw
-          - ta
-          - te
-          - th
-          - tr
-          - tt
-          - udm
-          - uk
-          - ur
-          - vi
-          - zh-hans
-          - zh-hant
-      tags:
-      - api-docs
-      security:
-      - tokenAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/vnd.oai.openapi:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/yaml:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/vnd.oai.openapi+json:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/json:
-              schema:
-                type: object
-                additionalProperties: {}
-          description: ''
   /api/v1/alert_methods/:
     get:
       operationId: api_v1_alert_methods_list
@@ -203,7 +67,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -407,7 +271,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -611,7 +475,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -815,7 +679,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -982,12 +846,6 @@ paths:
         description: Which field to use when ordering the results.
         schema:
           type: string
-      - in: query
-        name: process_type__uuid
-        schema:
-          type: string
-          format: uuid
-        description: process_type__uuid
       - name: search
         required: false
         in: query
@@ -1025,7 +883,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -1195,7 +1053,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -1334,12 +1192,6 @@ paths:
         description: A search term.
         schema:
           type: string
-      - in: query
-        name: workflow__uuid
-        schema:
-          type: string
-          format: uuid
-        description: workflow__uuid
       tags:
       - api
       security:
@@ -1371,7 +1223,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -1515,6 +1367,40 @@ paths:
               schema:
                 $ref: '#/components/schemas/WorkflowExecution'
           description: ''
+  /api/v1/workflow_executions/{uuid}/workflow_task_instance_executions/:
+    post:
+      operationId: api_v1_workflow_executions_workflow_task_instance_executions_create
+      description: ''
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecution'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecution'
+          description: ''
   /api/v1/workflow_task_instances/:
     get:
       operationId: api_v1_workflow_task_instances_list
@@ -1579,7 +1465,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -1762,7 +1648,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -1932,7 +1818,7 @@ paths:
       security:
       - tokenAuth: []
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -2191,11 +2077,17 @@ components:
         notify_on_timeout:
           type: boolean
         error_severity_on_missing_execution:
-          $ref: '#/components/schemas/ErrorSeverityOnMissingExecutionEnum'
+          oneOf:
+          - $ref: '#/components/schemas/ErrorSeverityOnMissingExecutionEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         error_severity_on_missing_heartbeat:
-          $ref: '#/components/schemas/ErrorSeverityOnMissingHeartbeatEnum'
+          oneOf:
+          - $ref: '#/components/schemas/ErrorSeverityOnMissingHeartbeatEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         error_severity_on_service_down:
-          $ref: '#/components/schemas/ErrorSeverityOnServiceDownEnum'
+          oneOf:
+          - $ref: '#/components/schemas/ErrorSeverityOnServiceDownEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         created_by_user:
           type: string
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
@@ -2205,6 +2097,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
+          nullable: true
         created_at:
           type: string
           format: date-time
@@ -2239,6 +2135,9 @@ components:
       required:
       - container_port
       - target_group_arn
+    BlankEnum:
+      enum:
+      - ''
     DefaultEventSeverityEnum:
       enum:
       - critical
@@ -2292,6 +2191,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
+          nullable: true
         created_at:
           type: string
           format: date-time
@@ -2423,6 +2326,24 @@ components:
       - EC2
       - FARGATE
       type: string
+    NameAndUuid:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        url:
+          type: string
+          readOnly: true
+        name:
+          type: string
+      required:
+      - name
+      - url
+      - uuid
+    NullEnum:
+      enum:
+      - null
     PagerDutyProfile:
       type: object
       properties:
@@ -2447,7 +2368,9 @@ components:
           type: string
           maxLength: 1000
         default_event_severity:
-          $ref: '#/components/schemas/DefaultEventSeverityEnum'
+          oneOf:
+          - $ref: '#/components/schemas/DefaultEventSeverityEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         default_event_component_template:
           type: string
           maxLength: 1000
@@ -2466,6 +2389,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
+          nullable: true
         created_at:
           type: string
           format: date-time
@@ -2676,11 +2603,17 @@ components:
         notify_on_timeout:
           type: boolean
         error_severity_on_missing_execution:
-          $ref: '#/components/schemas/ErrorSeverityOnMissingExecutionEnum'
+          oneOf:
+          - $ref: '#/components/schemas/ErrorSeverityOnMissingExecutionEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         error_severity_on_missing_heartbeat:
-          $ref: '#/components/schemas/ErrorSeverityOnMissingHeartbeatEnum'
+          oneOf:
+          - $ref: '#/components/schemas/ErrorSeverityOnMissingHeartbeatEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         error_severity_on_service_down:
-          $ref: '#/components/schemas/ErrorSeverityOnServiceDownEnum'
+          oneOf:
+          - $ref: '#/components/schemas/ErrorSeverityOnServiceDownEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         created_by_user:
           type: string
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
@@ -2690,6 +2623,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          nullable: true
         created_at:
           type: string
           format: date-time
@@ -2737,6 +2674,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          nullable: true
         created_at:
           type: string
           format: date-time
@@ -2808,6 +2749,17 @@ components:
         task_role:
           type: string
           maxLength: 1000
+    PatchedNameAndUuid:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        url:
+          type: string
+          readOnly: true
+        name:
+          type: string
     PatchedPagerDutyProfile:
       type: object
       properties:
@@ -2832,7 +2784,9 @@ components:
           type: string
           maxLength: 1000
         default_event_severity:
-          $ref: '#/components/schemas/DefaultEventSeverityEnum'
+          oneOf:
+          - $ref: '#/components/schemas/DefaultEventSeverityEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         default_event_component_template:
           type: string
           maxLength: 1000
@@ -2851,6 +2805,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          nullable: true
         created_at:
           type: string
           format: date-time
@@ -2879,7 +2837,8 @@ components:
           type: string
           readOnly: true
         process_type:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         process_version_number:
           type: integer
@@ -3256,18 +3215,21 @@ components:
           type: string
           readOnly: true
         run_environment:
-          type: string
-          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          nullable: true
         execution_method_capability:
           $ref: '#/components/schemas/PatchedProcessTypeExecutionMethodCapability'
         alert_methods:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         other_metadata:
           type: object
           additionalProperties: {}
           nullable: true
-        latest_process_execution:
+        latest_task_execution:
           type: string
           readOnly: true
         created_by_user:
@@ -3304,10 +3266,11 @@ components:
             type: string
           nullable: true
         default_launch_type:
-          allOf:
-          - $ref: '#/components/schemas/DefaultLaunchTypeEnum'
           nullable: true
           default: FARGATE
+          oneOf:
+          - $ref: '#/components/schemas/DefaultLaunchTypeEnum'
+          - $ref: '#/components/schemas/NullEnum'
         supported_launch_types:
           type: array
           items:
@@ -3405,13 +3368,19 @@ components:
           type: string
           maxLength: 1000
         default_alert_methods:
-          type: string
-          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchedNameAndUuid'
         execution_method_capabilities:
           type: string
           readOnly: true
     PatchedWorkflow:
       type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
       properties:
         url:
           type: string
@@ -3458,11 +3427,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          nullable: true
         enabled:
           type: boolean
-        alert_methods:
-          type: string
-          readOnly: true
         created_at:
           type: string
           format: date-time
@@ -3471,7 +3441,12 @@ components:
           type: string
           format: date-time
           readOnly: true
-        workflow_process_type_instances:
+        alert_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/NameAndUuid'
+          readOnly: true
+        workflow_task_instances:
           type: array
           items:
             $ref: '#/components/schemas/WorkflowProcessTypeInstance'
@@ -3496,7 +3471,8 @@ components:
           type: string
           readOnly: true
         workflow:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         status:
           type: string
@@ -3565,7 +3541,7 @@ components:
           type: object
           additionalProperties: {}
           nullable: true
-        workflow_process_type_instance_executions:
+        workflow_task_instance_executions:
           type: array
           items:
             $ref: '#/components/schemas/WorkflowProcessTypeInstanceExecution'
@@ -3671,10 +3647,12 @@ components:
           type: string
           maxLength: 5000
         workflow:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        process_type:
-          type: string
+        task:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         start_transition_condition:
           $ref: '#/components/schemas/StartTransitionConditionEnum'
@@ -3767,11 +3745,13 @@ components:
         description:
           type: string
           maxLength: 5000
-        from_workflow_process_type_instance:
-          type: string
+        from_workflow_task_instance:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        to_workflow_process_type_instance:
-          type: string
+        to_workflow_task_instance:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         rule_type:
           $ref: '#/components/schemas/RuleTypeEnum'
@@ -3781,7 +3761,9 @@ components:
             type: string
           nullable: true
         threshold_property:
-          $ref: '#/components/schemas/ThresholdPropertyEnum'
+          oneOf:
+          - $ref: '#/components/schemas/ThresholdPropertyEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         custom_expression:
           type: string
           maxLength: 5000
@@ -3828,7 +3810,8 @@ components:
           type: string
           readOnly: true
         process_type:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         process_version_number:
           type: integer
@@ -4218,18 +4201,21 @@ components:
           type: string
           readOnly: true
         run_environment:
-          type: string
-          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
+          nullable: true
         execution_method_capability:
           $ref: '#/components/schemas/ProcessTypeExecutionMethodCapability'
         alert_methods:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         other_metadata:
           type: object
           additionalProperties: {}
           nullable: true
-        latest_process_execution:
+        latest_task_execution:
           type: string
           readOnly: true
         created_by_user:
@@ -4260,13 +4246,11 @@ components:
       - created_by_group
       - created_by_user
       - dashboard_url
-      - execution_method_capability
       - is_service
-      - latest_process_execution
+      - latest_task_execution
       - links
       - logs_url
       - name
-      - run_environment
       - updated_at
       - url
       - uuid
@@ -4282,10 +4266,11 @@ components:
             type: string
           nullable: true
         default_launch_type:
-          allOf:
-          - $ref: '#/components/schemas/DefaultLaunchTypeEnum'
           nullable: true
           default: FARGATE
+          oneOf:
+          - $ref: '#/components/schemas/DefaultLaunchTypeEnum'
+          - $ref: '#/components/schemas/NullEnum'
         supported_launch_types:
           type: array
           items:
@@ -4396,8 +4381,9 @@ components:
           type: string
           maxLength: 1000
         default_alert_methods:
-          type: string
-          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NameAndUuid'
         execution_method_capabilities:
           type: string
           readOnly: true
@@ -4406,7 +4392,6 @@ components:
       - created_by_group
       - created_by_user
       - dashboard_url
-      - default_alert_methods
       - execution_method_capabilities
       - name
       - updated_at
@@ -4461,6 +4446,11 @@ components:
       - token
     Workflow:
       type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
       properties:
         url:
           type: string
@@ -4507,11 +4497,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
+          nullable: true
         enabled:
           type: boolean
-        alert_methods:
-          type: string
-          readOnly: true
         created_at:
           type: string
           format: date-time
@@ -4520,7 +4511,12 @@ components:
           type: string
           format: date-time
           readOnly: true
-        workflow_process_type_instances:
+        alert_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/NameAndUuid'
+          readOnly: true
+        workflow_task_instances:
           type: array
           items:
             $ref: '#/components/schemas/WorkflowProcessTypeInstance'
@@ -4540,7 +4536,7 @@ components:
       - updated_at
       - url
       - uuid
-      - workflow_process_type_instances
+      - workflow_task_instances
       - workflow_transitions
     WorkflowExecution:
       type: object
@@ -4557,7 +4553,8 @@ components:
           type: string
           readOnly: true
         workflow:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         status:
           type: string
@@ -4626,7 +4623,7 @@ components:
           type: object
           additionalProperties: {}
           nullable: true
-        workflow_process_type_instance_executions:
+        workflow_task_instance_executions:
           type: array
           items:
             $ref: '#/components/schemas/WorkflowProcessTypeInstanceExecution'
@@ -4656,7 +4653,7 @@ components:
       - url
       - uuid
       - workflow
-      - workflow_process_type_instance_executions
+      - workflow_task_instance_executions
       - workflow_transition_evaluations
     WorkflowExecutionSummary:
       type: object
@@ -4754,10 +4751,12 @@ components:
           type: string
           maxLength: 5000
         workflow:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        process_type:
-          type: string
+        task:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         start_transition_condition:
           $ref: '#/components/schemas/StartTransitionConditionEnum'
@@ -4839,7 +4838,7 @@ components:
       required:
       - created_at
       - name
-      - process_type
+      - task
       - updated_at
       - url
       - uuid
@@ -4852,12 +4851,14 @@ components:
           format: uuid
           readOnly: true
         workflow_execution:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        workflow_process_type_instance:
-          type: string
+        workflow_task_instance:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        process_execution:
+        task_execution:
           $ref: '#/components/schemas/ProcessExecution'
         is_latest:
           type: boolean
@@ -4867,10 +4868,10 @@ components:
           readOnly: true
       required:
       - created_at
-      - process_execution
+      - task_execution
       - uuid
       - workflow_execution
-      - workflow_process_type_instance
+      - workflow_task_instance
     WorkflowSummary:
       type: object
       properties:
@@ -4919,6 +4920,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
+          nullable: true
         enabled:
           type: boolean
         created_at:
@@ -4952,11 +4957,13 @@ components:
         description:
           type: string
           maxLength: 5000
-        from_workflow_process_type_instance:
-          type: string
+        from_workflow_task_instance:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        to_workflow_process_type_instance:
-          type: string
+        to_workflow_task_instance:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         rule_type:
           $ref: '#/components/schemas/RuleTypeEnum'
@@ -4966,7 +4973,9 @@ components:
             type: string
           nullable: true
         threshold_property:
-          $ref: '#/components/schemas/ThresholdPropertyEnum'
+          oneOf:
+          - $ref: '#/components/schemas/ThresholdPropertyEnum'
+          - $ref: '#/components/schemas/BlankEnum'
         custom_expression:
           type: string
           maxLength: 5000
@@ -4995,9 +5004,9 @@ components:
           readOnly: true
       required:
       - created_at
-      - from_workflow_process_type_instance
+      - from_workflow_task_instance
       - rule_type
-      - to_workflow_process_type_instance
+      - to_workflow_task_instance
       - updated_at
       - url
       - uuid
@@ -5011,12 +5020,14 @@ components:
         result:
           type: boolean
         workflow_transition:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         workflow_execution:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        from_workflow_process_type_instance_execution:
+        from_workflow_task_instance_execution:
           type: string
           nullable: true
           readOnly: true
@@ -5026,7 +5037,7 @@ components:
           readOnly: true
       required:
       - evaluated_at
-      - from_workflow_process_type_instance_execution
+      - from_workflow_task_instance_execution
       - result
       - uuid
       - workflow_execution
