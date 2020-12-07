@@ -1404,9 +1404,7 @@ paths:
   /api/v1/workflow_task_instances/:
     get:
       operationId: api_v1_workflow_task_instances_list
-      description: |-
-        The "workflow_process_type_instances" URL path is deprecated,
-        please use "workflow_task_instances" instead.
+      description: ''
       parameters:
       - name: limit
         required: false
@@ -1445,9 +1443,7 @@ paths:
           description: ''
     post:
       operationId: api_v1_workflow_task_instances_create
-      description: |-
-        The "workflow_process_type_instances" URL path is deprecated,
-        please use "workflow_task_instances" instead.
+      description: ''
       tags:
       - api
       requestBody:
@@ -1474,9 +1470,7 @@ paths:
   /api/v1/workflow_task_instances/{uuid}/:
     get:
       operationId: api_v1_workflow_task_instances_retrieve
-      description: |-
-        The "workflow_process_type_instances" URL path is deprecated,
-        please use "workflow_task_instances" instead.
+      description: ''
       parameters:
       - in: path
         name: uuid
@@ -1497,9 +1491,7 @@ paths:
           description: ''
     put:
       operationId: api_v1_workflow_task_instances_update
-      description: |-
-        The "workflow_process_type_instances" URL path is deprecated,
-        please use "workflow_task_instances" instead.
+      description: ''
       parameters:
       - in: path
         name: uuid
@@ -1532,9 +1524,7 @@ paths:
           description: ''
     patch:
       operationId: api_v1_workflow_task_instances_partial_update
-      description: |-
-        The "workflow_process_type_instances" URL path is deprecated,
-        please use "workflow_task_instances" instead.
+      description: ''
       parameters:
       - in: path
         name: uuid
@@ -1566,9 +1556,7 @@ paths:
           description: ''
     delete:
       operationId: api_v1_workflow_task_instances_destroy
-      description: |-
-        The "workflow_process_type_instances" URL path is deprecated,
-        please use "workflow_task_instances" instead.
+      description: ''
       parameters:
       - in: path
         name: uuid
@@ -1588,11 +1576,6 @@ paths:
       operationId: api_v1_workflow_transitions_list
       description: ''
       parameters:
-      - in: query
-        name: description
-        schema:
-          type: string
-        description: description
       - name: limit
         required: false
         in: query
@@ -2836,7 +2819,7 @@ components:
         dashboard_url:
           type: string
           readOnly: true
-        process_type:
+        task:
           allOf:
           - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
@@ -3809,7 +3792,7 @@ components:
         dashboard_url:
           type: string
           readOnly: true
-        process_type:
+        task:
           allOf:
           - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
@@ -4101,10 +4084,10 @@ components:
       - dashboard_url
       - killed_by
       - marked_done_by
-      - process_type
       - started_at
       - started_by
       - status
+      - task
       - updated_at
       - url
       - uuid
