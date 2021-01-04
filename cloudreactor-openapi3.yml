@@ -861,7 +861,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedProcessExecutionList'
+                $ref: '#/components/schemas/PaginatedTaskExecutionList'
           description: ''
     post:
       operationId: api_v1_task_executions_create
@@ -872,13 +872,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProcessExecution'
+              $ref: '#/components/schemas/TaskExecution'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ProcessExecution'
+              $ref: '#/components/schemas/TaskExecution'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ProcessExecution'
+              $ref: '#/components/schemas/TaskExecution'
         required: true
       security:
       - tokenAuth: []
@@ -887,7 +887,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessExecution'
+                $ref: '#/components/schemas/TaskExecution'
           description: ''
   /api/v1/task_executions/{uuid}/:
     get:
@@ -909,7 +909,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessExecution'
+                $ref: '#/components/schemas/TaskExecution'
           description: ''
     put:
       operationId: api_v1_task_executions_update
@@ -927,13 +927,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProcessExecution'
+              $ref: '#/components/schemas/TaskExecution'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ProcessExecution'
+              $ref: '#/components/schemas/TaskExecution'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ProcessExecution'
+              $ref: '#/components/schemas/TaskExecution'
         required: true
       security:
       - tokenAuth: []
@@ -942,7 +942,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessExecution'
+                $ref: '#/components/schemas/TaskExecution'
           description: ''
     patch:
       operationId: api_v1_task_executions_partial_update
@@ -960,13 +960,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedProcessExecution'
+              $ref: '#/components/schemas/PatchedTaskExecution'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedProcessExecution'
+              $ref: '#/components/schemas/PatchedTaskExecution'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedProcessExecution'
+              $ref: '#/components/schemas/PatchedTaskExecution'
       security:
       - tokenAuth: []
       responses:
@@ -974,7 +974,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessExecution'
+                $ref: '#/components/schemas/TaskExecution'
           description: ''
     delete:
       operationId: api_v1_task_executions_destroy
@@ -1031,7 +1031,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedProcessTypeList'
+                $ref: '#/components/schemas/PaginatedTaskList'
           description: ''
     post:
       operationId: api_v1_tasks_create
@@ -1042,13 +1042,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProcessType'
+              $ref: '#/components/schemas/Task'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ProcessType'
+              $ref: '#/components/schemas/Task'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ProcessType'
+              $ref: '#/components/schemas/Task'
         required: true
       security:
       - tokenAuth: []
@@ -1057,7 +1057,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessType'
+                $ref: '#/components/schemas/Task'
           description: ''
   /api/v1/tasks/{uuid}/:
     get:
@@ -1079,7 +1079,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessType'
+                $ref: '#/components/schemas/Task'
           description: ''
     put:
       operationId: api_v1_tasks_update
@@ -1097,13 +1097,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProcessType'
+              $ref: '#/components/schemas/Task'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ProcessType'
+              $ref: '#/components/schemas/Task'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ProcessType'
+              $ref: '#/components/schemas/Task'
         required: true
       security:
       - tokenAuth: []
@@ -1112,7 +1112,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessType'
+                $ref: '#/components/schemas/Task'
           description: ''
     patch:
       operationId: api_v1_tasks_partial_update
@@ -1130,13 +1130,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedProcessType'
+              $ref: '#/components/schemas/PatchedTask'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedProcessType'
+              $ref: '#/components/schemas/PatchedTask'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedProcessType'
+              $ref: '#/components/schemas/PatchedTask'
       security:
       - tokenAuth: []
       responses:
@@ -1144,7 +1144,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProcessType'
+                $ref: '#/components/schemas/Task'
           description: ''
     delete:
       operationId: api_v1_tasks_destroy
@@ -1439,7 +1439,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedWorkflowProcessTypeInstanceList'
+                $ref: '#/components/schemas/PaginatedWorkflowTaskInstanceList'
           description: ''
     post:
       operationId: api_v1_workflow_task_instances_create
@@ -1450,13 +1450,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/WorkflowTaskInstance'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/WorkflowTaskInstance'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/WorkflowTaskInstance'
         required: true
       security:
       - tokenAuth: []
@@ -1465,7 +1465,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+                $ref: '#/components/schemas/WorkflowTaskInstance'
           description: ''
   /api/v1/workflow_task_instances/{uuid}/:
     get:
@@ -1487,7 +1487,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+                $ref: '#/components/schemas/WorkflowTaskInstance'
           description: ''
     put:
       operationId: api_v1_workflow_task_instances_update
@@ -1505,13 +1505,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/WorkflowTaskInstance'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/WorkflowTaskInstance'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/WorkflowTaskInstance'
         required: true
       security:
       - tokenAuth: []
@@ -1520,7 +1520,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+                $ref: '#/components/schemas/WorkflowTaskInstance'
           description: ''
     patch:
       operationId: api_v1_workflow_task_instances_partial_update
@@ -1538,13 +1538,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedWorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/PatchedWorkflowTaskInstance'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedWorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/PatchedWorkflowTaskInstance'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedWorkflowProcessTypeInstance'
+              $ref: '#/components/schemas/PatchedWorkflowTaskInstance'
       security:
       - tokenAuth: []
       responses:
@@ -1552,7 +1552,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+                $ref: '#/components/schemas/WorkflowTaskInstance'
           description: ''
     delete:
       operationId: api_v1_workflow_task_instances_destroy
@@ -2249,6 +2249,9 @@ components:
         task_definition_arn:
           type: string
           maxLength: 1000
+        task_definition_infrastructure_website_url:
+          type: string
+          readOnly: true
         allocated_cpu_units:
           type: integer
         allocated_memory_mb:
@@ -2260,6 +2263,12 @@ components:
           type: array
           items:
             type: string
+        subnet_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
         launch_type:
           allOf:
           - $ref: '#/components/schemas/LaunchTypeEnum'
@@ -2267,19 +2276,40 @@ components:
         cluster_arn:
           type: string
           maxLength: 1000
+        cluster_infrastructure_website_url:
+          type: string
+          readOnly: true
         security_groups:
           type: array
           items:
             type: string
+        security_group_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
         assign_public_ip:
           type: boolean
         execution_role:
           type: string
           maxLength: 1000
+        execution_role_infrastructure_website_url:
+          type: string
+          readOnly: true
         task_role:
           type: string
           maxLength: 1000
+        task_role_infrastructure_website_url:
+          type: string
+          readOnly: true
       required:
+      - cluster_infrastructure_website_url
+      - execution_role_infrastructure_website_url
+      - security_group_infrastructure_website_urls
+      - subnet_infrastructure_website_urls
+      - task_definition_infrastructure_website_url
+      - task_role_infrastructure_website_url
       - type
     FailureBehaviorEnum:
       enum:
@@ -2442,38 +2472,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PagerDutyProfile'
-    PaginatedProcessExecutionList:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-        previous:
-          type: string
-          nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessExecution'
-    PaginatedProcessTypeList:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-        previous:
-          type: string
-          nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessType'
     PaginatedRunEnvironmentList:
       type: object
       properties:
@@ -2490,6 +2488,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RunEnvironment'
+    PaginatedTaskExecutionList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskExecution'
+    PaginatedTaskList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
     PaginatedWorkflowExecutionSummaryList:
       type: object
       properties:
@@ -2506,22 +2536,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkflowExecutionSummary'
-    PaginatedWorkflowProcessTypeInstanceList:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-        previous:
-          type: string
-          nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkflowProcessTypeInstance'
     PaginatedWorkflowSummaryList:
       type: object
       properties:
@@ -2538,6 +2552,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkflowSummary'
+    PaginatedWorkflowTaskInstanceList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTaskInstance'
     PaginatedWorkflowTransitionList:
       type: object
       properties:
@@ -2702,6 +2732,9 @@ components:
         task_definition_arn:
           type: string
           maxLength: 1000
+        task_definition_infrastructure_website_url:
+          type: string
+          readOnly: true
         allocated_cpu_units:
           type: integer
         allocated_memory_mb:
@@ -2713,6 +2746,12 @@ components:
           type: array
           items:
             type: string
+        subnet_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
         launch_type:
           allOf:
           - $ref: '#/components/schemas/LaunchTypeEnum'
@@ -2720,18 +2759,33 @@ components:
         cluster_arn:
           type: string
           maxLength: 1000
+        cluster_infrastructure_website_url:
+          type: string
+          readOnly: true
         security_groups:
           type: array
           items:
             type: string
+        security_group_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
         assign_public_ip:
           type: boolean
         execution_role:
           type: string
           maxLength: 1000
+        execution_role_infrastructure_website_url:
+          type: string
+          readOnly: true
         task_role:
           type: string
           maxLength: 1000
+        task_role_infrastructure_website_url:
+          type: string
+          readOnly: true
     PatchedNameAndUuid:
       type: object
       properties:
@@ -2800,7 +2854,210 @@ components:
           type: string
           format: date-time
           readOnly: true
-    PatchedProcessExecution:
+    PatchedRunEnvironment:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          allOf:
+          - $ref: '#/components/schemas/Group'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        aws_account_id:
+          type: string
+          maxLength: 200
+        aws_default_region:
+          type: string
+          maxLength: 20
+        aws_access_key:
+          type: string
+          maxLength: 100
+        aws_assumed_role_external_id:
+          type: string
+          maxLength: 1000
+        aws_events_role_arn:
+          type: string
+          maxLength: 100
+        aws_workflow_starter_lambda_arn:
+          type: string
+          maxLength: 1000
+        aws_workflow_starter_access_key:
+          type: string
+          maxLength: 1000
+        default_alert_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchedNameAndUuid'
+        execution_method_capabilities:
+          type: array
+          items:
+            type: string
+          readOnly: true
+    PatchedTask:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        infrastructure_website_url:
+          type: string
+          nullable: true
+          readOnly: true
+        max_manual_start_delay_before_alert_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_manual_start_delay_before_abandonment_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        heartbeat_interval_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: 10
+          nullable: true
+        max_heartbeat_lateness_before_alert_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_heartbeat_lateness_before_abandonment_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        schedule:
+          type: string
+          maxLength: 1000
+        is_service:
+          type: boolean
+          readOnly: true
+        service_instance_count:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        min_service_instance_count:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        project_url:
+          type: string
+          maxLength: 1000
+        log_query:
+          type: string
+          maxLength: 1000
+        logs_url:
+          type: string
+          readOnly: true
+        links:
+          type: string
+          readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          nullable: true
+        execution_method_capability:
+          $ref: '#/components/schemas/PatchedTaskExecutionMethodCapability'
+        alert_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/NameAndUuid'
+          readOnly: true
+        other_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        latest_task_execution:
+          type: string
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          allOf:
+          - $ref: '#/components/schemas/Group'
+          readOnly: true
+        was_auto_created:
+          type: boolean
+          nullable: true
+        enabled:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedTaskExecution:
       type: object
       description: |-
         A ModelSerializer that takes additional arguments for
@@ -2819,21 +3076,25 @@ components:
         dashboard_url:
           type: string
           readOnly: true
+        infrastructure_website_url:
+          type: string
+          nullable: true
+          readOnly: true
         task:
           allOf:
           - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        process_version_number:
+        task_version_number:
           type: integer
           maximum: 9223372036854775807
           minimum: -9223372036854775808
           format: int64
           nullable: true
-        process_version_text:
+        task_version_text:
           type: string
           nullable: true
           maxLength: 200
-        process_version_signature:
+        task_version_signature:
           type: string
           nullable: true
           maxLength: 200
@@ -3105,139 +3366,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-    PatchedProcessType:
-      type: object
-      description: |-
-        A ModelSerializer that takes additional arguments for
-        "fields", "omit" and "expand" in order to
-        control which fields are displayed, and whether to replace simple
-        values with complex, nested serializations
-      properties:
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        uuid:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 5000
-        dashboard_url:
-          type: string
-          readOnly: true
-        max_manual_start_delay_before_alert_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        max_manual_start_delay_before_abandonment_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        heartbeat_interval_seconds:
-          type: integer
-          maximum: 2147483647
-          minimum: 10
-          nullable: true
-        max_heartbeat_lateness_before_alert_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        max_heartbeat_lateness_before_abandonment_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        schedule:
-          type: string
-          maxLength: 1000
-        is_service:
-          type: boolean
-          readOnly: true
-        service_instance_count:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        min_service_instance_count:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        max_concurrency:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-        max_age_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        default_max_retries:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        project_url:
-          type: string
-          maxLength: 1000
-        log_query:
-          type: string
-          maxLength: 1000
-        logs_url:
-          type: string
-          readOnly: true
-        links:
-          type: string
-          readOnly: true
-        run_environment:
-          allOf:
-          - $ref: '#/components/schemas/PatchedNameAndUuid'
-          nullable: true
-        execution_method_capability:
-          $ref: '#/components/schemas/PatchedProcessTypeExecutionMethodCapability'
-        alert_methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/NameAndUuid'
-          readOnly: true
-        other_metadata:
-          type: object
-          additionalProperties: {}
-          nullable: true
-        latest_task_execution:
-          type: string
-          readOnly: true
-        created_by_user:
-          type: string
-          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
-            only.
-          readOnly: true
-        created_by_group:
-          allOf:
-          - $ref: '#/components/schemas/Group'
-          readOnly: true
-        was_auto_created:
-          type: boolean
-          nullable: true
-        enabled:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-    PatchedProcessTypeExecutionMethodCapability:
+    PatchedTaskExecutionMethodCapability:
       type: object
       properties:
         type:
@@ -3248,6 +3377,11 @@ components:
           items:
             type: string
           nullable: true
+        default_subnet_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
         default_launch_type:
           nullable: true
           default: FARGATE
@@ -3266,23 +3400,40 @@ components:
         default_cluster_arn:
           type: string
           maxLength: 1000
+        default_cluster_infrastructure_website_url:
+          type: string
+          readOnly: true
         default_security_groups:
           type: array
           items:
             type: string
           nullable: true
+        default_security_group_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
         default_assign_public_ip:
           type: boolean
           nullable: true
         default_execution_role:
           type: string
           maxLength: 1000
+        default_execution_role_infrastructure_website_url:
+          type: string
+          readOnly: true
         default_task_role:
           type: string
           maxLength: 1000
+        default_task_role_infrastructure_website_url:
+          type: string
+          readOnly: true
         task_definition_arn:
           type: string
           maxLength: 1000
+        task_definition_infrastructure_website_url:
+          type: string
+          readOnly: true
         allocated_cpu_units:
           type: integer
         allocated_memory_mb:
@@ -3292,71 +3443,6 @@ components:
           maxLength: 1000
         service_options:
           $ref: '#/components/schemas/PatchedEcsServiceOptions'
-    PatchedRunEnvironment:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        uuid:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 5000
-        dashboard_url:
-          type: string
-          readOnly: true
-        created_by_user:
-          type: string
-          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
-            only.
-          readOnly: true
-        created_by_group:
-          allOf:
-          - $ref: '#/components/schemas/Group'
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-        aws_account_id:
-          type: string
-          maxLength: 200
-        aws_default_region:
-          type: string
-          maxLength: 20
-        aws_access_key:
-          type: string
-          maxLength: 100
-        aws_assumed_role_external_id:
-          type: string
-          maxLength: 1000
-        aws_events_role_arn:
-          type: string
-          maxLength: 100
-        aws_workflow_starter_lambda_arn:
-          type: string
-          maxLength: 1000
-        aws_workflow_starter_access_key:
-          type: string
-          maxLength: 1000
-        default_alert_methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/PatchedNameAndUuid'
-        execution_method_capabilities:
-          type: string
-          readOnly: true
     PatchedWorkflow:
       type: object
       description: |-
@@ -3432,7 +3518,7 @@ components:
         workflow_task_instances:
           type: array
           items:
-            $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+            $ref: '#/components/schemas/WorkflowTaskInstance'
           readOnly: true
         workflow_transitions:
           type: array
@@ -3527,7 +3613,7 @@ components:
         workflow_task_instance_executions:
           type: array
           items:
-            $ref: '#/components/schemas/WorkflowProcessTypeInstanceExecution'
+            $ref: '#/components/schemas/WorkflowTaskInstanceExecution'
           readOnly: true
         workflow_transition_evaluations:
           type: array
@@ -3612,7 +3698,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-    PatchedWorkflowProcessTypeInstance:
+    PatchedWorkflowTaskInstance:
       type: object
       properties:
         url:
@@ -3686,7 +3772,7 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           nullable: true
-        use_process_type_alert_methods:
+        use_task_alert_methods:
           type: boolean
         ui_color:
           type: string
@@ -3773,7 +3859,253 @@ components:
           type: string
           format: date-time
           readOnly: true
-    ProcessExecution:
+    RuleTypeEnum:
+      enum:
+      - always
+      - success
+      - failure
+      - timeout
+      - exit_code
+      - threshold
+      - custom
+      - default
+      type: string
+    RunEnvironment:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          allOf:
+          - $ref: '#/components/schemas/Group'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        aws_account_id:
+          type: string
+          maxLength: 200
+        aws_default_region:
+          type: string
+          maxLength: 20
+        aws_access_key:
+          type: string
+          maxLength: 100
+        aws_assumed_role_external_id:
+          type: string
+          maxLength: 1000
+        aws_events_role_arn:
+          type: string
+          maxLength: 100
+        aws_workflow_starter_lambda_arn:
+          type: string
+          maxLength: 1000
+        aws_workflow_starter_access_key:
+          type: string
+          maxLength: 1000
+        default_alert_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/NameAndUuid'
+        execution_method_capabilities:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - execution_method_capabilities
+      - name
+      - updated_at
+      - url
+      - uuid
+    StartTransitionConditionEnum:
+      enum:
+      - all
+      - any
+      - count_at_least
+      - ratio_at_least
+      type: string
+    Task:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        infrastructure_website_url:
+          type: string
+          nullable: true
+          readOnly: true
+        max_manual_start_delay_before_alert_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_manual_start_delay_before_abandonment_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        heartbeat_interval_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: 10
+          nullable: true
+        max_heartbeat_lateness_before_alert_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_heartbeat_lateness_before_abandonment_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        schedule:
+          type: string
+          maxLength: 1000
+        is_service:
+          type: boolean
+          readOnly: true
+        service_instance_count:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        min_service_instance_count:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          nullable: true
+          minimum: 0
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        project_url:
+          type: string
+          maxLength: 1000
+        log_query:
+          type: string
+          maxLength: 1000
+        logs_url:
+          type: string
+          readOnly: true
+        links:
+          type: string
+          readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
+          nullable: true
+        execution_method_capability:
+          $ref: '#/components/schemas/TaskExecutionMethodCapability'
+        alert_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/NameAndUuid'
+          readOnly: true
+        other_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        latest_task_execution:
+          type: string
+          readOnly: true
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          allOf:
+          - $ref: '#/components/schemas/Group'
+          readOnly: true
+        was_auto_created:
+          type: boolean
+          nullable: true
+        enabled:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - alert_methods
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - infrastructure_website_url
+      - is_service
+      - latest_task_execution
+      - links
+      - logs_url
+      - name
+      - updated_at
+      - url
+      - uuid
+    TaskExecution:
       type: object
       description: |-
         A ModelSerializer that takes additional arguments for
@@ -3792,21 +4124,25 @@ components:
         dashboard_url:
           type: string
           readOnly: true
+        infrastructure_website_url:
+          type: string
+          nullable: true
+          readOnly: true
         task:
           allOf:
           - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
-        process_version_number:
+        task_version_number:
           type: integer
           maximum: 9223372036854775807
           minimum: -9223372036854775808
           format: int64
           nullable: true
-        process_version_text:
+        task_version_text:
           type: string
           nullable: true
           maxLength: 200
-        process_version_signature:
+        task_version_signature:
           type: string
           nullable: true
           maxLength: 200
@@ -4082,6 +4418,7 @@ components:
       - commit_url
       - created_at
       - dashboard_url
+      - infrastructure_website_url
       - killed_by
       - marked_done_by
       - started_at
@@ -4091,153 +4428,7 @@ components:
       - updated_at
       - url
       - uuid
-    ProcessType:
-      type: object
-      description: |-
-        A ModelSerializer that takes additional arguments for
-        "fields", "omit" and "expand" in order to
-        control which fields are displayed, and whether to replace simple
-        values with complex, nested serializations
-      properties:
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        uuid:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 5000
-        dashboard_url:
-          type: string
-          readOnly: true
-        max_manual_start_delay_before_alert_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        max_manual_start_delay_before_abandonment_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        heartbeat_interval_seconds:
-          type: integer
-          maximum: 2147483647
-          minimum: 10
-          nullable: true
-        max_heartbeat_lateness_before_alert_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        max_heartbeat_lateness_before_abandonment_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        schedule:
-          type: string
-          maxLength: 1000
-        is_service:
-          type: boolean
-          readOnly: true
-        service_instance_count:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        min_service_instance_count:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        max_concurrency:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-        max_age_seconds:
-          type: integer
-          maximum: 2147483647
-          nullable: true
-          minimum: 0
-        default_max_retries:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        project_url:
-          type: string
-          maxLength: 1000
-        log_query:
-          type: string
-          maxLength: 1000
-        logs_url:
-          type: string
-          readOnly: true
-        links:
-          type: string
-          readOnly: true
-        run_environment:
-          allOf:
-          - $ref: '#/components/schemas/NameAndUuid'
-          nullable: true
-        execution_method_capability:
-          $ref: '#/components/schemas/ProcessTypeExecutionMethodCapability'
-        alert_methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/NameAndUuid'
-          readOnly: true
-        other_metadata:
-          type: object
-          additionalProperties: {}
-          nullable: true
-        latest_task_execution:
-          type: string
-          readOnly: true
-        created_by_user:
-          type: string
-          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
-            only.
-          readOnly: true
-        created_by_group:
-          allOf:
-          - $ref: '#/components/schemas/Group'
-          readOnly: true
-        was_auto_created:
-          type: boolean
-          nullable: true
-        enabled:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - alert_methods
-      - created_at
-      - created_by_group
-      - created_by_user
-      - dashboard_url
-      - is_service
-      - latest_task_execution
-      - links
-      - logs_url
-      - name
-      - updated_at
-      - url
-      - uuid
-    ProcessTypeExecutionMethodCapability:
+    TaskExecutionMethodCapability:
       type: object
       properties:
         type:
@@ -4248,6 +4439,11 @@ components:
           items:
             type: string
           nullable: true
+        default_subnet_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
         default_launch_type:
           nullable: true
           default: FARGATE
@@ -4266,23 +4462,40 @@ components:
         default_cluster_arn:
           type: string
           maxLength: 1000
+        default_cluster_infrastructure_website_url:
+          type: string
+          readOnly: true
         default_security_groups:
           type: array
           items:
             type: string
           nullable: true
+        default_security_group_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
         default_assign_public_ip:
           type: boolean
           nullable: true
         default_execution_role:
           type: string
           maxLength: 1000
+        default_execution_role_infrastructure_website_url:
+          type: string
+          readOnly: true
         default_task_role:
           type: string
           maxLength: 1000
+        default_task_role_infrastructure_website_url:
+          type: string
+          readOnly: true
         task_definition_arn:
           type: string
           maxLength: 1000
+        task_definition_infrastructure_website_url:
+          type: string
+          readOnly: true
         allocated_cpu_units:
           type: integer
         allocated_memory_mb:
@@ -4293,100 +4506,13 @@ components:
         service_options:
           $ref: '#/components/schemas/EcsServiceOptions'
       required:
+      - default_cluster_infrastructure_website_url
+      - default_execution_role_infrastructure_website_url
+      - default_security_group_infrastructure_website_urls
+      - default_subnet_infrastructure_website_urls
+      - default_task_role_infrastructure_website_url
+      - task_definition_infrastructure_website_url
       - type
-    RuleTypeEnum:
-      enum:
-      - always
-      - success
-      - failure
-      - timeout
-      - exit_code
-      - threshold
-      - custom
-      - default
-      type: string
-    RunEnvironment:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        uuid:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 5000
-        dashboard_url:
-          type: string
-          readOnly: true
-        created_by_user:
-          type: string
-          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
-            only.
-          readOnly: true
-        created_by_group:
-          allOf:
-          - $ref: '#/components/schemas/Group'
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-        aws_account_id:
-          type: string
-          maxLength: 200
-        aws_default_region:
-          type: string
-          maxLength: 20
-        aws_access_key:
-          type: string
-          maxLength: 100
-        aws_assumed_role_external_id:
-          type: string
-          maxLength: 1000
-        aws_events_role_arn:
-          type: string
-          maxLength: 100
-        aws_workflow_starter_lambda_arn:
-          type: string
-          maxLength: 1000
-        aws_workflow_starter_access_key:
-          type: string
-          maxLength: 1000
-        default_alert_methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/NameAndUuid'
-        execution_method_capabilities:
-          type: string
-          readOnly: true
-      required:
-      - created_at
-      - created_by_group
-      - created_by_user
-      - dashboard_url
-      - execution_method_capabilities
-      - name
-      - updated_at
-      - url
-      - uuid
-    StartTransitionConditionEnum:
-      enum:
-      - all
-      - any
-      - count_at_least
-      - ratio_at_least
-      type: string
     ThresholdPropertyEnum:
       enum:
       - execution_time
@@ -4502,7 +4628,7 @@ components:
         workflow_task_instances:
           type: array
           items:
-            $ref: '#/components/schemas/WorkflowProcessTypeInstance'
+            $ref: '#/components/schemas/WorkflowTaskInstance'
           readOnly: true
         workflow_transitions:
           type: array
@@ -4609,7 +4735,7 @@ components:
         workflow_task_instance_executions:
           type: array
           items:
-            $ref: '#/components/schemas/WorkflowProcessTypeInstanceExecution'
+            $ref: '#/components/schemas/WorkflowTaskInstanceExecution'
           readOnly: true
         workflow_transition_evaluations:
           type: array
@@ -4716,7 +4842,78 @@ components:
       - updated_at
       - url
       - uuid
-    WorkflowProcessTypeInstance:
+    WorkflowSummary:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 5000
+        dashboard_url:
+          type: string
+          readOnly: true
+        schedule:
+          type: string
+          maxLength: 1000
+        max_concurrency:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        max_age_seconds:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        default_max_retries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        latest_workflow_execution:
+          $ref: '#/components/schemas/WorkflowExecutionSummary'
+        created_by_user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        created_by_group:
+          allOf:
+          - $ref: '#/components/schemas/Group'
+          readOnly: true
+        run_environment:
+          allOf:
+          - $ref: '#/components/schemas/NameAndUuid'
+          nullable: true
+        enabled:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - created_by_group
+      - created_by_user
+      - dashboard_url
+      - name
+      - updated_at
+      - url
+      - uuid
+    WorkflowTaskInstance:
       type: object
       properties:
         url:
@@ -4790,7 +4987,7 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           nullable: true
-        use_process_type_alert_methods:
+        use_task_alert_methods:
           type: boolean
         ui_color:
           type: string
@@ -4826,7 +5023,7 @@ components:
       - url
       - uuid
       - workflow
-    WorkflowProcessTypeInstanceExecution:
+    WorkflowTaskInstanceExecution:
       type: object
       properties:
         uuid:
@@ -4842,7 +5039,7 @@ components:
           - $ref: '#/components/schemas/NameAndUuid'
           readOnly: true
         task_execution:
-          $ref: '#/components/schemas/ProcessExecution'
+          $ref: '#/components/schemas/TaskExecution'
         is_latest:
           type: boolean
         created_at:
@@ -4855,77 +5052,6 @@ components:
       - uuid
       - workflow_execution
       - workflow_task_instance
-    WorkflowSummary:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        uuid:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 5000
-        dashboard_url:
-          type: string
-          readOnly: true
-        schedule:
-          type: string
-          maxLength: 1000
-        max_concurrency:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-        max_age_seconds:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-        default_max_retries:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        latest_workflow_execution:
-          $ref: '#/components/schemas/WorkflowExecutionSummary'
-        created_by_user:
-          type: string
-          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
-            only.
-          readOnly: true
-        created_by_group:
-          allOf:
-          - $ref: '#/components/schemas/Group'
-          readOnly: true
-        run_environment:
-          allOf:
-          - $ref: '#/components/schemas/NameAndUuid'
-          nullable: true
-        enabled:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - created_by_group
-      - created_by_user
-      - dashboard_url
-      - name
-      - updated_at
-      - url
-      - uuid
     WorkflowTransition:
       type: object
       properties:
