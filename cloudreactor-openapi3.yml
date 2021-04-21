@@ -40,6 +40,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -66,6 +67,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -88,6 +90,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -121,6 +124,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -153,6 +157,7 @@ paths:
               $ref: '#/components/schemas/PatchedAlertMethod'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -174,6 +179,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -204,6 +210,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -244,6 +251,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -270,6 +278,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -292,6 +301,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -325,6 +335,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -357,6 +368,7 @@ paths:
               $ref: '#/components/schemas/PatchedEmailNotificationProfile'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -378,6 +390,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -408,6 +421,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -448,6 +462,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -474,6 +489,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -496,6 +512,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -529,6 +546,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -561,6 +579,7 @@ paths:
               $ref: '#/components/schemas/PatchedPagerDutyProfile'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -582,6 +601,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -612,6 +632,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -652,6 +673,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -678,6 +700,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -700,6 +723,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -733,6 +757,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -765,6 +790,7 @@ paths:
               $ref: '#/components/schemas/PatchedRunEnvironment'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -786,6 +812,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -816,6 +843,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -856,6 +884,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -882,6 +911,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -904,6 +934,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -937,6 +968,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -969,6 +1001,7 @@ paths:
               $ref: '#/components/schemas/PatchedTaskExecution'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -990,6 +1023,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1026,6 +1060,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1052,6 +1087,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1074,6 +1110,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1107,6 +1144,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1139,6 +1177,7 @@ paths:
               $ref: '#/components/schemas/PatchedTask'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1160,6 +1199,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1196,6 +1236,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1222,6 +1263,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1244,6 +1286,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1277,6 +1320,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1309,6 +1353,7 @@ paths:
               $ref: '#/components/schemas/PatchedWorkflowExecution'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1330,6 +1375,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1360,6 +1406,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1394,6 +1441,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1434,6 +1482,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1460,6 +1509,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1482,6 +1532,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1515,6 +1566,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1547,6 +1599,7 @@ paths:
               $ref: '#/components/schemas/PatchedWorkflowTaskInstance'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1568,6 +1621,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1604,6 +1658,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1630,6 +1685,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1652,6 +1708,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1685,6 +1742,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1717,6 +1775,7 @@ paths:
               $ref: '#/components/schemas/PatchedWorkflowTransition'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1738,6 +1797,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1774,6 +1834,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1800,6 +1861,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '201':
           content:
@@ -1822,6 +1884,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1855,6 +1918,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1887,6 +1951,7 @@ paths:
               $ref: '#/components/schemas/PatchedWorkflow'
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -1908,6 +1973,7 @@ paths:
       - api
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '204':
           description: No response body
@@ -1938,6 +2004,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -2051,7 +2118,8 @@ components:
         enabled:
           type: boolean
         method_details:
-          type: string
+          type: object
+          additionalProperties: {}
           readOnly: true
         notify_on_success:
           type: boolean
@@ -2102,6 +2170,265 @@ components:
       - updated_at
       - url
       - uuid
+    AwsEcsExecutionMethod:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        type:
+          type: string
+          readOnly: true
+        task_definition_arn:
+          type: string
+          maxLength: 1000
+        task_definition_infrastructure_website_url:
+          type: string
+          readOnly: true
+        allocated_cpu_units:
+          type: integer
+        allocated_memory_mb:
+          type: integer
+        task_arn:
+          type: string
+          maxLength: 1000
+        subnets:
+          type: array
+          items:
+            type: string
+        subnet_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+            nullable: true
+          nullable: true
+          readOnly: true
+        launch_type:
+          allOf:
+          - $ref: '#/components/schemas/SupportedLaunchTypesEnum'
+          default: FARGATE
+        cluster_arn:
+          type: string
+          maxLength: 1000
+        cluster_infrastructure_website_url:
+          type: string
+          readOnly: true
+        security_groups:
+          type: array
+          items:
+            type: string
+        security_group_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+            nullable: true
+          nullable: true
+          readOnly: true
+        assign_public_ip:
+          type: boolean
+        execution_role:
+          type: string
+          maxLength: 1000
+        execution_role_infrastructure_website_url:
+          type: string
+          readOnly: true
+        task_role:
+          type: string
+          maxLength: 1000
+        task_role_infrastructure_website_url:
+          type: string
+          readOnly: true
+        platform_version:
+          type: string
+          maxLength: 10
+      required:
+      - cluster_infrastructure_website_url
+      - execution_role_infrastructure_website_url
+      - security_group_infrastructure_website_urls
+      - subnet_infrastructure_website_urls
+      - task_definition_infrastructure_website_url
+      - task_role_infrastructure_website_url
+      - type
+    AwsEcsExecutionMethodCapability:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        task_definition_arn:
+          type: string
+          maxLength: 1000
+        task_definition_infrastructure_website_url:
+          type: string
+          readOnly: true
+        allocated_cpu_units:
+          type: integer
+        allocated_memory_mb:
+          type: integer
+        type:
+          type: string
+          readOnly: true
+        capabilities:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        default_subnets:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_subnet_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        default_launch_type:
+          nullable: true
+          default: FARGATE
+          oneOf:
+          - $ref: '#/components/schemas/SupportedLaunchTypesEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        supported_launch_types:
+          type: array
+          items:
+            allOf:
+            - $ref: '#/components/schemas/SupportedLaunchTypesEnum'
+            default: FARGATE
+          nullable: true
+        default_cluster_arn:
+          type: string
+          maxLength: 1000
+        default_cluster_infrastructure_website_url:
+          type: string
+          readOnly: true
+        default_security_groups:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_security_group_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        default_assign_public_ip:
+          type: boolean
+          nullable: true
+        default_execution_role:
+          type: string
+          maxLength: 1000
+        default_execution_role_infrastructure_website_url:
+          type: string
+          readOnly: true
+        default_task_role:
+          type: string
+          maxLength: 1000
+        default_task_role_infrastructure_website_url:
+          type: string
+          readOnly: true
+        default_platform_version:
+          type: string
+          maxLength: 10
+        main_container_name:
+          type: string
+          maxLength: 1000
+        service_options:
+          $ref: '#/components/schemas/AwsEcsServiceOptions'
+      required:
+      - capabilities
+      - default_cluster_infrastructure_website_url
+      - default_execution_role_infrastructure_website_url
+      - default_security_group_infrastructure_website_urls
+      - default_subnet_infrastructure_website_urls
+      - default_task_role_infrastructure_website_url
+      - task_definition_infrastructure_website_url
+      - type
+    AwsEcsRunEnvironmentExecutionMethodCapability:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        type:
+          type: string
+          readOnly: true
+        capabilities:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        default_subnets:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_subnet_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        default_launch_type:
+          nullable: true
+          default: FARGATE
+          oneOf:
+          - $ref: '#/components/schemas/SupportedLaunchTypesEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        supported_launch_types:
+          type: array
+          items:
+            allOf:
+            - $ref: '#/components/schemas/SupportedLaunchTypesEnum'
+            default: FARGATE
+          nullable: true
+        default_cluster_arn:
+          type: string
+          maxLength: 1000
+        default_cluster_infrastructure_website_url:
+          type: string
+          readOnly: true
+        default_security_groups:
+          type: array
+          items:
+            type: string
+          nullable: true
+        default_security_group_infrastructure_website_urls:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        default_assign_public_ip:
+          type: boolean
+          nullable: true
+        default_execution_role:
+          type: string
+          maxLength: 1000
+        default_execution_role_infrastructure_website_url:
+          type: string
+          readOnly: true
+        default_task_role:
+          type: string
+          maxLength: 1000
+        default_task_role_infrastructure_website_url:
+          type: string
+          readOnly: true
+        default_platform_version:
+          type: string
+          maxLength: 10
+      required:
+      - capabilities
+      - default_cluster_infrastructure_website_url
+      - default_execution_role_infrastructure_website_url
+      - default_security_group_infrastructure_website_urls
+      - default_subnet_infrastructure_website_urls
+      - default_task_role_infrastructure_website_url
+      - type
     AwsEcsServiceLoadBalancerDetails:
       type: object
       properties:
@@ -2118,22 +2445,7 @@ components:
       required:
       - container_port
       - target_group_arn
-    BlankEnum:
-      enum:
-      - ''
-    DefaultEventSeverityEnum:
-      enum:
-      - critical
-      - error
-      - warning
-      - info
-      type: string
-    DefaultLaunchTypeEnum:
-      enum:
-      - FARGATE
-      - EC2
-      type: string
-    EcsServiceOptions:
+    AwsEcsServiceOptions:
       type: object
       properties:
         load_balancers:
@@ -2145,6 +2457,39 @@ components:
           type: integer
       required:
       - load_balancers
+    BlankEnum:
+      enum:
+      - ''
+    CurrentServiceInfo:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        service_arn:
+          type: string
+          readOnly: true
+        service_infrastructure_website_url:
+          type: string
+          nullable: true
+          readOnly: true
+        service_arn_updated_at:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+      required:
+      - service_arn
+      - service_arn_updated_at
+      - service_infrastructure_website_url
+      - type
+    DefaultEventSeverityEnum:
+      enum:
+      - critical
+      - error
+      - warning
+      - info
+      type: string
     EmailNotificationProfile:
       type: object
       properties:
@@ -2240,80 +2585,15 @@ components:
       - warning
       - info
       type: string
-    ExecutionMethod:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-        task_definition_arn:
-          type: string
-          maxLength: 1000
-        task_definition_infrastructure_website_url:
-          type: string
-          readOnly: true
-        allocated_cpu_units:
-          type: integer
-        allocated_memory_mb:
-          type: integer
-        task_arn:
-          type: string
-          maxLength: 1000
-        subnets:
-          type: array
-          items:
-            type: string
-        subnet_infrastructure_website_urls:
-          type: array
-          items:
-            type: string
-          nullable: true
-          readOnly: true
-        launch_type:
-          allOf:
-          - $ref: '#/components/schemas/LaunchTypeEnum'
-          default: FARGATE
-        cluster_arn:
-          type: string
-          maxLength: 1000
-        cluster_infrastructure_website_url:
-          type: string
-          readOnly: true
-        security_groups:
-          type: array
-          items:
-            type: string
-        security_group_infrastructure_website_urls:
-          type: array
-          items:
-            type: string
-          nullable: true
-          readOnly: true
-        assign_public_ip:
-          type: boolean
-        execution_role:
-          type: string
-          maxLength: 1000
-        execution_role_infrastructure_website_url:
-          type: string
-          readOnly: true
-        task_role:
-          type: string
-          maxLength: 1000
-        task_role_infrastructure_website_url:
-          type: string
-          readOnly: true
-        platform_version:
-          type: string
-          maxLength: 10
-      required:
-      - cluster_infrastructure_website_url
-      - execution_role_infrastructure_website_url
-      - security_group_infrastructure_website_urls
-      - subnet_infrastructure_website_urls
-      - task_definition_infrastructure_website_url
-      - task_role_infrastructure_website_url
-      - type
+    ExecutionMethodCapability:
+      oneOf:
+      - $ref: '#/components/schemas/AwsEcsExecutionMethodCapability'
+      - $ref: '#/components/schemas/UnknownExecutionMethodCapability'
+      discriminator:
+        propertyName: type
+        mapping:
+          AWS ECS: '#/components/schemas/AwsEcsExecutionMethodCapability'
+          Unknown: '#/components/schemas/UnknownExecutionMethodCapability'
     FailureBehaviorEnum:
       enum:
       - always_fail_workflow
@@ -2337,11 +2617,34 @@ components:
       - id
       - name
       - url
-    LaunchTypeEnum:
-      enum:
-      - FARGATE
-      - EC2
-      type: string
+    Link:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        link_url_template:
+          type: string
+        link_url:
+          type: string
+          readOnly: true
+        icon_url:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        rank:
+          type: integer
+      required:
+      - description
+      - icon_url
+      - link_url
+      - link_url_template
+      - name
+      - rank
+      - uuid
     NameAndUuid:
       type: object
       properties:
@@ -2350,6 +2653,7 @@ components:
           format: uuid
         url:
           type: string
+          nullable: true
           readOnly: true
         name:
           type: string
@@ -2436,9 +2740,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2452,9 +2760,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2468,9 +2780,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2484,9 +2800,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2500,9 +2820,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2516,9 +2840,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2532,9 +2860,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2548,9 +2880,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2564,9 +2900,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2580,9 +2920,13 @@ components:
         next:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
           type: string
           nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
         results:
           type: array
           items:
@@ -2610,7 +2954,8 @@ components:
         enabled:
           type: boolean
         method_details:
-          type: string
+          type: object
+          additionalProperties: {}
           readOnly: true
         notify_on_success:
           type: boolean
@@ -2641,7 +2986,7 @@ components:
           readOnly: true
         run_environment:
           allOf:
-          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          - $ref: '#/components/schemas/NameAndUuid'
           nullable: true
         created_at:
           type: string
@@ -2651,16 +2996,6 @@ components:
           type: string
           format: date-time
           readOnly: true
-    PatchedEcsServiceOptions:
-      type: object
-      properties:
-        load_balancers:
-          type: array
-          items:
-            $ref: '#/components/schemas/AwsEcsServiceLoadBalancerDetails'
-          readOnly: true
-        health_check_grace_period_seconds:
-          type: integer
     PatchedEmailNotificationProfile:
       type: object
       properties:
@@ -2692,7 +3027,7 @@ components:
           readOnly: true
         run_environment:
           allOf:
-          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          - $ref: '#/components/schemas/NameAndUuid'
           nullable: true
         created_at:
           type: string
@@ -2726,83 +3061,6 @@ components:
         body_template:
           type: string
           maxLength: 10000
-    PatchedExecutionMethod:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-        task_definition_arn:
-          type: string
-          maxLength: 1000
-        task_definition_infrastructure_website_url:
-          type: string
-          readOnly: true
-        allocated_cpu_units:
-          type: integer
-        allocated_memory_mb:
-          type: integer
-        task_arn:
-          type: string
-          maxLength: 1000
-        subnets:
-          type: array
-          items:
-            type: string
-        subnet_infrastructure_website_urls:
-          type: array
-          items:
-            type: string
-          nullable: true
-          readOnly: true
-        launch_type:
-          allOf:
-          - $ref: '#/components/schemas/LaunchTypeEnum'
-          default: FARGATE
-        cluster_arn:
-          type: string
-          maxLength: 1000
-        cluster_infrastructure_website_url:
-          type: string
-          readOnly: true
-        security_groups:
-          type: array
-          items:
-            type: string
-        security_group_infrastructure_website_urls:
-          type: array
-          items:
-            type: string
-          nullable: true
-          readOnly: true
-        assign_public_ip:
-          type: boolean
-        execution_role:
-          type: string
-          maxLength: 1000
-        execution_role_infrastructure_website_url:
-          type: string
-          readOnly: true
-        task_role:
-          type: string
-          maxLength: 1000
-        task_role_infrastructure_website_url:
-          type: string
-          readOnly: true
-        platform_version:
-          type: string
-          maxLength: 10
-    PatchedNameAndUuid:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        url:
-          type: string
-          readOnly: true
-        name:
-          type: string
     PatchedPagerDutyProfile:
       type: object
       properties:
@@ -2850,7 +3108,7 @@ components:
           readOnly: true
         run_environment:
           allOf:
-          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          - $ref: '#/components/schemas/NameAndUuid'
           nullable: true
         created_at:
           type: string
@@ -2921,9 +3179,11 @@ components:
         default_alert_methods:
           type: array
           items:
-            $ref: '#/components/schemas/PatchedNameAndUuid'
+            $ref: '#/components/schemas/NameAndUuid'
         execution_method_capabilities:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/AwsEcsRunEnvironmentExecutionMethodCapability'
           readOnly: true
     PatchedTask:
       type: object
@@ -3020,14 +3280,17 @@ components:
           nullable: true
           readOnly: true
         links:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Link'
           readOnly: true
         run_environment:
           allOf:
-          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          - $ref: '#/components/schemas/NameAndUuid'
           nullable: true
         execution_method_capability:
-          $ref: '#/components/schemas/PatchedTaskExecutionMethodCapability'
+          allOf:
+          - $ref: '#/components/schemas/ExecutionMethodCapability'
+          readOnly: true
         alert_methods:
           type: array
           items:
@@ -3038,10 +3301,12 @@ components:
           additionalProperties: {}
           nullable: true
         latest_task_execution:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/TaskExecution'
           readOnly: true
         current_service_info:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/CurrentServiceInfo'
           readOnly: true
         created_by_user:
           type: string
@@ -3055,6 +3320,8 @@ components:
         was_auto_created:
           type: boolean
           nullable: true
+        passive:
+          type: boolean
         enabled:
           type: boolean
         created_at:
@@ -3123,7 +3390,9 @@ components:
           additionalProperties: {}
           nullable: true
         execution_method:
-          $ref: '#/components/schemas/PatchedExecutionMethod'
+          allOf:
+          - $ref: '#/components/schemas/AwsEcsExecutionMethod'
+          readOnly: true
         status:
           type: string
         started_by:
@@ -3389,86 +3658,6 @@ components:
           type: string
           format: date-time
           readOnly: true
-    PatchedTaskExecutionMethodCapability:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-        default_subnets:
-          type: array
-          items:
-            type: string
-          nullable: true
-        default_subnet_infrastructure_website_urls:
-          type: array
-          items:
-            type: string
-          readOnly: true
-        default_launch_type:
-          nullable: true
-          default: FARGATE
-          oneOf:
-          - $ref: '#/components/schemas/DefaultLaunchTypeEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        supported_launch_types:
-          type: array
-          items:
-            enum:
-            - FARGATE
-            - EC2
-            type: string
-            default: FARGATE
-          nullable: true
-        default_cluster_arn:
-          type: string
-          maxLength: 1000
-        default_cluster_infrastructure_website_url:
-          type: string
-          readOnly: true
-        default_security_groups:
-          type: array
-          items:
-            type: string
-          nullable: true
-        default_security_group_infrastructure_website_urls:
-          type: array
-          items:
-            type: string
-          readOnly: true
-        default_assign_public_ip:
-          type: boolean
-          nullable: true
-        default_execution_role:
-          type: string
-          maxLength: 1000
-        default_execution_role_infrastructure_website_url:
-          type: string
-          readOnly: true
-        default_task_role:
-          type: string
-          maxLength: 1000
-        default_task_role_infrastructure_website_url:
-          type: string
-          readOnly: true
-        default_platform_version:
-          type: string
-          maxLength: 10
-        task_definition_arn:
-          type: string
-          maxLength: 1000
-        task_definition_infrastructure_website_url:
-          type: string
-          readOnly: true
-        allocated_cpu_units:
-          type: integer
-        allocated_memory_mb:
-          type: integer
-        main_container_name:
-          type: string
-          maxLength: 1000
-        service_options:
-          $ref: '#/components/schemas/PatchedEcsServiceOptions'
     PatchedWorkflow:
       type: object
       description: |-
@@ -3512,7 +3701,7 @@ components:
           maximum: 2147483647
           minimum: -2147483648
         latest_workflow_execution:
-          $ref: '#/components/schemas/PatchedWorkflowExecutionSummary'
+          $ref: '#/components/schemas/WorkflowExecutionSummary'
         created_by_user:
           type: string
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
@@ -3524,7 +3713,7 @@ components:
           readOnly: true
         run_environment:
           allOf:
-          - $ref: '#/components/schemas/PatchedNameAndUuid'
+          - $ref: '#/components/schemas/NameAndUuid'
           nullable: true
         enabled:
           type: boolean
@@ -3646,76 +3835,6 @@ components:
           items:
             $ref: '#/components/schemas/WorkflowTransitionEvaluation'
           readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-    PatchedWorkflowExecutionSummary:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        uuid:
-          type: string
-          format: uuid
-          readOnly: true
-        dashboard_url:
-          type: string
-          readOnly: true
-        status:
-          type: string
-        run_reason:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        started_at:
-          type: string
-          format: date-time
-          readOnly: true
-        finished_at:
-          type: string
-          format: date-time
-          nullable: true
-        last_heartbeat_at:
-          type: string
-          format: date-time
-          nullable: true
-        stop_reason:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-        marked_done_at:
-          type: string
-          format: date-time
-          nullable: true
-        kill_started_at:
-          type: string
-          format: date-time
-          nullable: true
-        kill_finished_at:
-          type: string
-          format: date-time
-          nullable: true
-        kill_error_code:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-        failed_attempts:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        timed_out_attempts:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
         created_at:
           type: string
           format: date-time
@@ -3959,7 +4078,9 @@ components:
           items:
             $ref: '#/components/schemas/NameAndUuid'
         execution_method_capabilities:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/AwsEcsRunEnvironmentExecutionMethodCapability'
           readOnly: true
       required:
       - created_at
@@ -3977,6 +4098,11 @@ components:
       - any
       - count_at_least
       - ratio_at_least
+      type: string
+    SupportedLaunchTypesEnum:
+      enum:
+      - FARGATE
+      - EC2
       type: string
     Task:
       type: object
@@ -4073,14 +4199,17 @@ components:
           nullable: true
           readOnly: true
         links:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Link'
           readOnly: true
         run_environment:
           allOf:
           - $ref: '#/components/schemas/NameAndUuid'
           nullable: true
         execution_method_capability:
-          $ref: '#/components/schemas/TaskExecutionMethodCapability'
+          allOf:
+          - $ref: '#/components/schemas/ExecutionMethodCapability'
+          readOnly: true
         alert_methods:
           type: array
           items:
@@ -4091,10 +4220,12 @@ components:
           additionalProperties: {}
           nullable: true
         latest_task_execution:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/TaskExecution'
           readOnly: true
         current_service_info:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/CurrentServiceInfo'
           readOnly: true
         created_by_user:
           type: string
@@ -4108,6 +4239,8 @@ components:
         was_auto_created:
           type: boolean
           nullable: true
+        passive:
+          type: boolean
         enabled:
           type: boolean
         created_at:
@@ -4125,6 +4258,7 @@ components:
       - created_by_user
       - current_service_info
       - dashboard_url
+      - execution_method_capability
       - infrastructure_website_url
       - is_service
       - latest_task_execution
@@ -4192,7 +4326,9 @@ components:
           additionalProperties: {}
           nullable: true
         execution_method:
-          $ref: '#/components/schemas/ExecutionMethod'
+          allOf:
+          - $ref: '#/components/schemas/AwsEcsExecutionMethod'
+          readOnly: true
         status:
           type: string
         started_by:
@@ -4462,6 +4598,7 @@ components:
       - commit_url
       - created_at
       - dashboard_url
+      - execution_method
       - infrastructure_website_url
       - killed_by
       - marked_done_by
@@ -4472,94 +4609,6 @@ components:
       - updated_at
       - url
       - uuid
-    TaskExecutionMethodCapability:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-        default_subnets:
-          type: array
-          items:
-            type: string
-          nullable: true
-        default_subnet_infrastructure_website_urls:
-          type: array
-          items:
-            type: string
-          readOnly: true
-        default_launch_type:
-          nullable: true
-          default: FARGATE
-          oneOf:
-          - $ref: '#/components/schemas/DefaultLaunchTypeEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        supported_launch_types:
-          type: array
-          items:
-            enum:
-            - FARGATE
-            - EC2
-            type: string
-            default: FARGATE
-          nullable: true
-        default_cluster_arn:
-          type: string
-          maxLength: 1000
-        default_cluster_infrastructure_website_url:
-          type: string
-          readOnly: true
-        default_security_groups:
-          type: array
-          items:
-            type: string
-          nullable: true
-        default_security_group_infrastructure_website_urls:
-          type: array
-          items:
-            type: string
-          readOnly: true
-        default_assign_public_ip:
-          type: boolean
-          nullable: true
-        default_execution_role:
-          type: string
-          maxLength: 1000
-        default_execution_role_infrastructure_website_url:
-          type: string
-          readOnly: true
-        default_task_role:
-          type: string
-          maxLength: 1000
-        default_task_role_infrastructure_website_url:
-          type: string
-          readOnly: true
-        default_platform_version:
-          type: string
-          maxLength: 10
-        task_definition_arn:
-          type: string
-          maxLength: 1000
-        task_definition_infrastructure_website_url:
-          type: string
-          readOnly: true
-        allocated_cpu_units:
-          type: integer
-        allocated_memory_mb:
-          type: integer
-        main_container_name:
-          type: string
-          maxLength: 1000
-        service_options:
-          $ref: '#/components/schemas/EcsServiceOptions'
-      required:
-      - default_cluster_infrastructure_website_url
-      - default_execution_role_infrastructure_website_url
-      - default_security_group_infrastructure_website_urls
-      - default_subnet_infrastructure_website_urls
-      - default_task_role_infrastructure_website_url
-      - task_definition_infrastructure_website_url
-      - type
     ThresholdPropertyEnum:
       enum:
       - execution_time
@@ -4580,18 +4629,32 @@ components:
       properties:
         username:
           type: string
+          writeOnly: true
         password:
           type: string
           writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
       required:
+      - access
       - password
+      - refresh
       - username
     TokenRefresh:
       type: object
       properties:
+        access:
+          type: string
+          readOnly: true
         refresh:
           type: string
+          writeOnly: true
       required:
+      - access
       - refresh
     TokenVerify:
       type: object
@@ -4600,6 +4663,25 @@ components:
           type: string
       required:
       - token
+    UnknownExecutionMethodCapability:
+      type: object
+      description: |-
+        A ModelSerializer that takes additional arguments for
+        "fields", "omit" and "expand" in order to
+        control which fields are displayed, and whether to replace simple
+        values with complex, nested serializations
+      properties:
+        type:
+          type: string
+          readOnly: true
+        capabilities:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+      - capabilities
+      - type
     Workflow:
       type: object
       description: |-
@@ -5199,10 +5281,15 @@ components:
       - workflow_execution
       - workflow_transition
   securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: Session
     tokenAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: Token
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
 externalDocs:
   url: https://docs.cloudreactor.io/
   description: CloudReactor Documentation Home
